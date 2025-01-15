@@ -2,8 +2,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import dash
-import dash_html_components as html
-from dash import Dash, dcc, html, Input, Output, callback
+from dash import dcc, html, Input, Output, callback
 
 # Create Dash app
 app = dash.Dash(__name__)
@@ -31,13 +30,16 @@ etl_methods = etl["Method"].tolist()
 
 
 width = '70%'
+dd_color = '#353431'
+bg_color = '#23221B'
+background_color = '#8E9FA3'
 
-# Layout of the Dash app
+font_color = "#D1B930"
 app.layout = html.Div([
     html.Div([
         # Column 1: Dropdowns and titles
         html.Div([
-            html.H4("Cover Glass"),
+            html.H4("Cover Glass", className='dropdown'),
             dcc.Dropdown(
                 id='coverGlass-dropdown',
                 options=[{'label': method, 'value': method} for method in coverGlass_methods],
@@ -45,7 +47,7 @@ app.layout = html.Div([
                 style={'width': width}
             ),
             
-            html.H4("Back Contact"),
+            html.H4("Back Contact", className='dropdown'),
             dcc.Dropdown(
                 id='backContact-dropdown',
                 options=[{'label': method, 'value': method} for method in backContact_methods],
@@ -53,7 +55,7 @@ app.layout = html.Div([
                 style={'width': width}
             ),
             
-            html.H4("Absorber"),
+            html.H4("Absorber", className='dropdown'),
             dcc.Dropdown(
                 id='Absorber-dropdown',
                 options=[{'label': method, 'value': method} for method in Absorber_methods],
@@ -61,7 +63,7 @@ app.layout = html.Div([
                 style={'width': width}
             ),
             
-            html.H4("ETL/Coated Glass"),
+            html.H4("ETL/Coated Glass", className='dropdown'),
             dcc.Dropdown(
                 id='etl-dropdown',
                 options=[{'label': method, 'value': method} for method in etl_methods],
@@ -71,11 +73,28 @@ app.layout = html.Div([
         ], style={'width': '30%', 'padding': '20px'}),  # 30% width for dropdowns and titles
         
         # Column 2: The Graph
-         html.Div([
+        html.Div([
             dcc.Graph(id='cost-bar-chart')
-        ], style={'width': '10%', 'padding': '20px', 'display': 'flex', 'justify-content': 'center'}),  # Flexbox to center the graph
-    ], style={'display': 'flex', 'align-items': 'flex-start'}),  # Flexbox layout to align side by side
-])
+        ], style={'width': '50%', 'padding-left': '30px', 
+                  'display': 'flex', 'justify-content': 'center', 
+                  'align-items': 'center',
+                  'background': dd_color,
+                  'color': font_color}),  # Flexbox to center the graph
+    ], style={'background': dd_color, 'display': 'flex', 
+              'align-items': 'flex-start', 
+              'justify-content': 'center', 
+              'width': '90%',
+              'border-radius': '15px',
+              'border': 'solid black 2px',
+              'padding': '25px'}),  # Flexbox layout to align side by side and center horizontally
+], style={'display': 'flex', 'flex-direction': 'column', 
+          'align-items': 'center', 'justify-content': 'center', 
+          'height': '100vh',
+          'background': bg_color,
+          'padding': '0',
+          'margin': '0',
+          })  # Outer Div to center everything on the page
+
 
 # Function to generate the bar chart based on selected methods
 @app.callback(
@@ -158,11 +177,22 @@ def update_graph(coverGlass_method, backContact_method, Absorber_method, etl_met
         barmode='group',  # Group bars side by side
         height=600,  # Make the graph taller
         width=800,
-        margin=dict(t=40, b=40, l=40, r=40),  # Adjust margins
+        margin=dict(t=80, b=40, l=40, r=40),  # Adjust margins
         title_font=dict(size=24),  # Larger title font size
         xaxis_title_font=dict(size=18),  # X-axis title font size
         yaxis_title_font=dict(size=18),  # Y-axis title font size
-        legend=dict(font=dict(size=14))  # Legend font size
+        legend=dict(font=dict(size=14)),  # Legend font size
+        paper_bgcolor= bg_color,  # Background color of the entire figure
+        shapes=[{
+        'type': 'rect',
+        'x0': 0, 'y0': 0,
+        'x1': 1, 'y1': 1,
+        'xref': 'paper', 'yref': 'paper',
+        'line': {
+            'color': 'black',
+            'width': 2
+        }
+    }]
     )
     
     return fig

@@ -1,0 +1,20 @@
+body{
+    margin: 0;
+}
+
+.dropdown {
+    color: #afa732; /* Choose your preferred color */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+}
+
+.plot-container {
+    border-radius: 15px; /* Adjust the value as needed */
+    overflow: hidden;
+}
+
+.main-graph {
+    background-color: lightblue;
+    border-radius: 15px;
+    padding: 10px;
+}

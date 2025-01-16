@@ -29,12 +29,16 @@ Absorber_methods = Absorber["Method"].tolist()
 etl_methods = etl["Method"].tolist()
 
 
+#drop down and background styles
 width = '70%'
 dd_color = '#353431'
 bg_color = '#23221B'
 background_color = '#8E9FA3'
 
-font_color = "#D1B930"
+#bar graph styles
+font_color = "#afa732"
+font_family = "Courier New"
+
 app.layout = html.Div([
     html.Div([
         # Column 1: Dropdowns and titles
@@ -126,42 +130,56 @@ def update_graph(coverGlass_method, backContact_method, Absorber_method, etl_met
     # Create the bar chart
     fig = go.Figure()
 
+    bar_title_font_style = dict(size=12, color="black", family=font_family)
+    # Add each selected item to the bar chart with customized colors
     # Add each selected item to the bar chart with customized colors
     fig.add_trace(go.Bar(
         x=["Cover Glass"],
         y=[coverGlass_row["Cost"].values[0]],
         name="Cover Glass",
-        marker=dict(color='lightblue')  # Customize color
+        marker=dict(color='lightblue'),  # Customize color
+        text=[f"${coverGlass_row['Cost'].values[0]}"],  # The text label for the bar
+        textposition="outside",  # Position of the text (outside the bar)
+        textfont=bar_title_font_style  # Apply custom font style
     ))
 
     fig.add_trace(go.Bar(
         x=["Back Contact"],
         y=[backContact_row["Cost"].values[0]],
         name="Back Contact",
-        marker=dict(color='lightgreen')  # Customize color
+        marker=dict(color='lightgreen'),  # Customize color
+        text=[f"${backContact_row['Cost'].values[0]}"],  # The text label for the bar
+        textposition="outside",  # Position of the text (outside the bar)
+        textfont=bar_title_font_style,  # Apply custom font style
     ))
 
     fig.add_trace(go.Bar(
         x=["Absorber"],
         y=[Absorber_row["Cost"].values[0]],
         name="Absorber",
-        marker=dict(color='lightcoral')  # Customize color
+        marker=dict(color='lightcoral'),  # Customize color
+        text=[f"${Absorber_row['Cost'].values[0]}"],  # The text label for the bar
+        textposition="outside",  # Position of the text (outside the bar)
+        textfont=bar_title_font_style,  # Apply custom font style
     ))
 
     fig.add_trace(go.Bar(
         x=["ETL"],
         y=[etl_row["Cost"].values[0]],
         name="ETL",
-        marker=dict(color='gold')  # Customize color
+        marker=dict(color='gold'),  # Customize color
+        text=[f"${etl_row['Cost'].values[0]}"],  # The text label for the bar
+        textposition="outside",  # Position of the text (outside the bar)
+        textfont=bar_title_font_style  # Apply custom font style
     ))
 
      # Add annotation for the total cost
     fig.add_annotation(
         text=f"Total Cost: ${formatted_total_cost}",
         xref="paper", yref="paper",
-        x=1.24, y=0.0,
+        x=1.27, y=0.0,
         showarrow=False,
-        font=dict(size=16, color="black"),
+        font=dict(size=16, color=font_color, family=font_family),
         align="center"
     )
 
@@ -172,16 +190,16 @@ def update_graph(coverGlass_method, backContact_method, Absorber_method, etl_met
         yaxis={
             'title': 'Cost',
             'range': [0, 10],  # Adjust y-axis range for smaller prices
-            'gridcolor': 'lightgray'  # Grid line color
+            'gridcolor': 'darkgray'  # Grid line color
         },
         barmode='group',  # Group bars side by side
         height=600,  # Make the graph taller
         width=800,
         margin=dict(t=80, b=40, l=40, r=40),  # Adjust margins
-        title_font=dict(size=24),  # Larger title font size
-        xaxis_title_font=dict(size=18),  # X-axis title font size
-        yaxis_title_font=dict(size=18),  # Y-axis title font size
-        legend=dict(font=dict(size=14)),  # Legend font size
+        title_font=dict(size=24, color=font_color, family=font_family),  # Larger title font size
+        xaxis_title_font=dict(size=18, color=font_color, family=font_family),  # X-axis title font size
+        yaxis_title_font=dict(size=18, color=font_color, family=font_family),  # Y-axis title font size
+        legend=dict(font=dict(size=14, color=font_color, family=font_family)),  # Legend font size
         paper_bgcolor= bg_color,  # Background color of the entire figure
         shapes=[{
         'type': 'rect',

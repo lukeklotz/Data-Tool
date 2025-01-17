@@ -7,7 +7,7 @@ from dash import dcc, html, Input, Output, callback
 # Create Dash app
 app = dash.Dash(__name__)
 
-# Load the data
+# Load data
 data = pd.read_excel("DATA_EMMA.xlsx", sheet_name=11)
 
 # Filter relevant columns
@@ -177,7 +177,7 @@ def update_graph(coverGlass_method, backContact_method, Absorber_method, etl_met
     fig.add_annotation(
         text=f"Total Cost: ${formatted_total_cost}",
         xref="paper", yref="paper",
-        x=1.27, y=0.0,
+        x=1.29, y=0.0,
         showarrow=False,
         font=dict(size=16, color=font_color, family=font_family),
         align="center"

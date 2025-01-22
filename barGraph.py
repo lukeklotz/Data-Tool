@@ -10,9 +10,15 @@ def displayBarGraph(app, coverGlass_methods, backContact_methods, Absorber_metho
     app.layout = html.Div([
 
         html.Div([
-            html.Div(className="box"),
-            html.Div(className="box"),
-        ], className="materials-container"), 
+            html.Div([
+                html.H3("Step 1: Selection of Materials", className="dropdown"),
+                html.Img(src="/assets/graphic.png", alt="img_1", className="box-image")
+            ], className="box"),
+            html.Div([
+                html.H3("Step 2: Selection of Extraction Method", className="dropdown"),
+                html.Img(src="/assets/text.png", alt="img_2", className="box-image")
+            ], className="box"),
+        ], className="materials-container"),
 
     html.Div([
         # Column 1: Dropdowns and titles
@@ -51,27 +57,28 @@ def displayBarGraph(app, coverGlass_methods, backContact_methods, Absorber_metho
             
         ], style={'width': '30%', 'padding': '20px'}),  # 30% width for dropdowns and titles
         
-        # Column 2: The Graph
+
         html.Div([
             dcc.Graph(id='cost-bar-chart')
-        ], style={'width': '50%', 'padding-left': '30px', #dropdown menu
+        ], style={'width': '50%', 'padding-left': '30px',         #dropdown menu
                   'display': 'flex', 'justify-content': 'center', 
                   'align-items': 'center',
                   'background': dd_color,
-                  'color': font_color}),  # Flexbox to center the graph
-    ], style={'background': dd_color, 'display': 'flex', #graph and dropdown container
+                  'color': font_color}), 
+
+    ], style={'background': dd_color, 'display': 'flex',          #graph and dropdown container
               'align-items': 'flex-start', 
               'justify-content': 'center', 
               'width': '90%',
               'border-radius': '15px',
               'border': 'solid black 2px',
-              'padding': '25px'}),  # Flexbox layout to align side by side and center horizontally
+              'padding': '25px',
+              'margin-bottom': '50px'}), 
 
-
-], style={'display': 'flex', 'flex-direction': 'column', #background
+], style={'display': 'flex', 'flex-direction': 'column',          #background
           'align-items': 'center', 'justify-content': 'center', 
-          'height': '100vh',
+          'height': '100%',
           'background': bg_color,
           'padding': '0',
           'margin': '0',
-          })  # Outer Div to center everything on the page
+          })  

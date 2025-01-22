@@ -1,8 +1,10 @@
-import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
-import dash
-from dash import dcc, html, Input, Output, callback
+#import pandas as pd
+#import plotly.express as px
+#import plotly.graph_objects as go
+#import dash
+#from dash import dcc, html, Input, Output, callback
+
+from materials import *
 
 # Create Dash app
 app = dash.Dash(__name__)
@@ -39,65 +41,12 @@ background_color = '#8E9FA3'
 font_color = "#afa732"
 font_family = "Courier New"
 
-app.layout = html.Div([
-    html.Div([
-        # Column 1: Dropdowns and titles
-        html.Div([
-            html.H4("Cover Glass", className='dropdown'),
-            dcc.Dropdown(
-                id='coverGlass-dropdown',
-                options=[{'label': method, 'value': method} for method in coverGlass_methods],
-                value=coverGlass_methods[0],  # Default value
-                style={'width': width}
-            ),
-            
-            html.H4("Back Contact", className='dropdown'),
-            dcc.Dropdown(
-                id='backContact-dropdown',
-                options=[{'label': method, 'value': method} for method in backContact_methods],
-                value=backContact_methods[0],  # Default value
-                style={'width': width}
-            ),
-            
-            html.H4("Absorber", className='dropdown'),
-            dcc.Dropdown(
-                id='Absorber-dropdown',
-                options=[{'label': method, 'value': method} for method in Absorber_methods],
-                value=Absorber_methods[0],  # Default value
-                style={'width': width}
-            ),
-            
-            html.H4("ETL/Coated Glass", className='dropdown'),
-            dcc.Dropdown(
-                id='etl-dropdown',
-                options=[{'label': method, 'value': method} for method in etl_methods],
-                value=etl_methods[0],  # Default value
-                style={'width': width}
-            ),
-        ], style={'width': '30%', 'padding': '20px'}),  # 30% width for dropdowns and titles
-        
-        # Column 2: The Graph
-        html.Div([
-            dcc.Graph(id='cost-bar-chart')
-        ], style={'width': '50%', 'padding-left': '30px', 
-                  'display': 'flex', 'justify-content': 'center', 
-                  'align-items': 'center',
-                  'background': dd_color,
-                  'color': font_color}),  # Flexbox to center the graph
-    ], style={'background': dd_color, 'display': 'flex', 
-              'align-items': 'flex-start', 
-              'justify-content': 'center', 
-              'width': '90%',
-              'border-radius': '15px',
-              'border': 'solid black 2px',
-              'padding': '25px'}),  # Flexbox layout to align side by side and center horizontally
-], style={'display': 'flex', 'flex-direction': 'column', 
-          'align-items': 'center', 'justify-content': 'center', 
-          'height': '100vh',
-          'background': bg_color,
-          'padding': '0',
-          'margin': '0',
-          })  # Outer Div to center everything on the page
+
+displayMaterials(app)
+
+#displays bargraph. 
+# Contents of this function are in barGraph.py
+displayBarGraph(app, coverGlass_methods, backContact_methods, Absorber_methods, etl_methods, width, dd_color, font_color, bg_color)
 
 
 # Function to generate the bar chart based on selected methods
@@ -173,6 +122,16 @@ def update_graph(coverGlass_method, backContact_method, Absorber_method, etl_met
         textfont=bar_title_font_style  # Apply custom font style
     ))
 
+    fig.add_trace(go.Bar(
+        x=["Total"],
+        y=[formatted_total_cost],
+        name="Total Cost",
+        marker=dict(color='darkgreen'),
+        text=[f"${formatted_total_cost}"],
+        textposition="outside",
+        textfont=bar_title_font_style,
+    ))
+
      # Add annotation for the total cost
     fig.add_annotation(
         text=f"Total Cost: ${formatted_total_cost}",
@@ -208,7 +167,7 @@ def update_graph(coverGlass_method, backContact_method, Absorber_method, etl_met
         'xref': 'paper', 'yref': 'paper',
         'line': {
             'color': 'black',
-            'width': 2
+            'width': 2,
         }
     }]
     )

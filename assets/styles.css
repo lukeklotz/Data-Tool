@@ -18,3 +18,29 @@ body{
     border-radius: 15px;
     padding: 10px;
 }
+
+
+
+/* materals styling */
+
+/* Flexbox container to arrange the boxes side by side */
+.materials-container {
+    display: flex;  /* This arranges children in a row (side by side) */
+    justify-content: center;  /* Centers the boxes horizontally */
+    align-items: center;      /* Centers the boxes vertically */
+    width: 80vw;
+}
+
+/* Styling for each box */
+.box {
+    width: 50vw;  /* Each box will be 200px wide */
+    height: 200px; /* Each box will be 200px tall */
+    background-color: #353431; /* Green background color */
+    color: white;  /* White text color */
+    display: flex; /* Flexbox for centering text inside the box */
+    justify-content: center;  /* Centers text horizontally */
+    align-items: center;      /* Centers text vertically */
+    margin: 10px;  /* Adds some space between the boxes */
+    border-radius: 10px;  /* Optional: Rounds the corners of the boxes */
+    border: solid black 2px;
+}

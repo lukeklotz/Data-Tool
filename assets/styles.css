@@ -3,13 +3,13 @@ body{
 }
 
 .dropdown {
-    color: #afa732; /* Choose your preferred color */
+    color: #afa732; 
     font-family: 'Courier New', Courier, monospace;
     font-size: medium;
 }
 
 .plot-container {
-    border-radius: 15px; /* Adjust the value as needed */
+    border-radius: 15px; 
     overflow: hidden;
 }
 
@@ -21,6 +21,19 @@ body{
 
 
 
+/* header styling */
+
+h1 {
+    color: #afa732; 
+    font-family: 'Courier New', Courier, monospace; 
+}
+
+.top {
+
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+}
+
 /* materals styling */
 
 .materials-container {
@@ -28,11 +41,10 @@ body{
     justify-content: center;  
     align-items: center;      
     width: 80vw;
-    padding: 5vh;
+    padding: 2vh;
 }
 
-
-.box {
+.box-common {
     background-color: #353431; 
     color: white;  
     display: flex; 
@@ -46,6 +58,15 @@ body{
     padding: 10px;
     margin: 15px;
 }
+
+.box-top{
+    align-items: start;      
+}
+
+.box-mid {
+    align-items: center;       
+}
+
 
 .box-image{
     height: 80%;

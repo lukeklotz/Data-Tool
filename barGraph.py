@@ -8,16 +8,27 @@ from dash import dcc, html, Input, Output, callback
 def displayBarGraph(app, coverGlass_methods, backContact_methods, Absorber_methods, etl_methods, width, dd_color, font_color, bg_color):
 
     app.layout = html.Div([
+        
+        html.Div([
+            html.Div([
+                html.H1("Assumptions for Tool", className="big-font"),
+                html.P("1. The volume of chemicals applied was determined by completely submerging the 1m2 module plus 10% volume on the surface area, totaling 3.9L.", className="top"),
+                html.P("2. The methods were modeled following literature and applying large scale applications. ", className="top"),
+                html.P("3. The price of chemicals was taken from commercial suppliers (Sigma Aldrich, Alibaba, and ChemAnaylst) to utilize bulk chemicals prices for large scale recycling. ", className="top"),
+                html.P("4. The price of 1 kWh of energy was taken from the most up-to-date cost of industrial electricity at $0.073/kWh  ", className="top"),
+                html.P("5. The model build does not include frame, cables, and junctions. ", className="top"),
+            ], className="box-common box-top"),
+        ], className="materials-container"),
 
         html.Div([
             html.Div([
                 html.H3("Step 1: Selection of Materials", className="dropdown"),
                 html.Img(src="/assets/graphic.png", alt="img_1", className="box-image")
-            ], className="box"),
+            ], className="box-common box-mid"),
             html.Div([
                 html.H3("Step 2: Selection of Extraction Method", className="dropdown"),
                 html.Img(src="/assets/text.png", alt="img_2", className="box-image")
-            ], className="box"),
+            ], className="box-common box-mid"),
         ], className="materials-container"),
 
     html.Div([

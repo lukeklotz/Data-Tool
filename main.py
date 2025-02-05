@@ -198,4 +198,4 @@ def update_graph(coverGlass_method, backContact_method, Absorber_method, etl_met
 
 # Run the app
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(debug=True, host="0.0.0.0", port=8000)

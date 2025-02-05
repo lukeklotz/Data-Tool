@@ -75,58 +75,67 @@ def update_graph(coverGlass_method, backContact_method, Absorber_method, etl_met
 
     total_cost = coverGlass_cost + backContact_cost + Absorber_cost + etl_cost
     formatted_total_cost = round(total_cost, 2)
+
+    coverGlassCost = round(coverGlass_row['Cost'].values[0], 2)
+    backContactCost = round(backContact_row['Cost'].values[0], 2)
+    absorberCost = round(Absorber_row['Cost'].values[0], 2)
+    etlCost = round(etl_row['Cost'].values[0], 2)
     
     # Create the bar chart
     fig = go.Figure()
 
     bar_title_font_style = dict(size=12, color="black", family=font_family)
-    # Add each selected item to the bar chart with customized colors
-    # Add each selected item to the bar chart with customized colors
+
     fig.add_trace(go.Bar(
         x=["Cover Glass"],
         y=[coverGlass_row["Cost"].values[0]],
         name="Cover Glass",
-        marker=dict(color='lightblue'),  # Customize color
-        text=[f"${coverGlass_row['Cost'].values[0]}"],  # The text label for the bar
-        textposition="outside",  # Position of the text (outside the bar)
-        textfont=bar_title_font_style  # Apply custom font style
+        marker=dict(color='red',
+                    line=dict(width=2, color="black")),      # color
+        text=[f"${coverGlassCost}"],         # cost label $x.xx
+        textposition="outside", 
+        textfont=bar_title_font_style        # font style
     ))
 
     fig.add_trace(go.Bar(
         x=["Back Contact"],
         y=[backContact_row["Cost"].values[0]],
         name="Back Contact",
-        marker=dict(color='lightgreen'),  # Customize color
-        text=[f"${backContact_row['Cost'].values[0]}"],  # The text label for the bar
-        textposition="outside",  # Position of the text (outside the bar)
-        textfont=bar_title_font_style,  # Apply custom font style
+        marker=dict(color='orange',
+                    line=dict(width=2, color="black")),                 # color
+        text=[f"${backContactCost}"],                    # cost
+        textposition="outside",  
+        textfont=bar_title_font_style,                   # font style
     ))
 
     fig.add_trace(go.Bar(
         x=["Absorber"],
         y=[Absorber_row["Cost"].values[0]],
         name="Absorber",
-        marker=dict(color='lightcoral'),  # Customize color
-        text=[f"${Absorber_row['Cost'].values[0]}"],  # The text label for the bar
-        textposition="outside",  # Position of the text (outside the bar)
-        textfont=bar_title_font_style,  # Apply custom font style
+        marker=dict(color='lightblue',
+                line=dict(width=2, color="black")),                 # color
+        text=[f"${absorberCost}"],                       # cost
+        textposition="outside", 
+        textfont=bar_title_font_style,                   # font style
     ))
 
     fig.add_trace(go.Bar(
         x=["ETL"],
         y=[etl_row["Cost"].values[0]],
         name="ETL",
-        marker=dict(color='gold'),  # Customize color
-        text=[f"${etl_row['Cost'].values[0]}"],  # The text label for the bar
-        textposition="outside",  # Position of the text (outside the bar)
-        textfont=bar_title_font_style  # Apply custom font style
+        marker=dict(color='yellow',
+                    line=dict(width=2, color="black")),                  # color
+        text=[f"${etlCost}"],                       # cost
+        textposition="outside",                     
+        textfont=bar_title_font_style               # font style
     ))
 
     fig.add_trace(go.Bar(
         x=["Total"],
         y=[formatted_total_cost],
         name="Total Cost",
-        marker=dict(color='darkgreen'),
+        marker=dict(color='darkgreen',
+                    line=dict(width=2, color="black")),
         text=[f"${formatted_total_cost}"],
         textposition="outside",
         textfont=bar_title_font_style,
@@ -142,13 +151,23 @@ def update_graph(coverGlass_method, backContact_method, Absorber_method, etl_met
         align="center"
     )
 
+    fig.update_layout(
+            xaxis=dict(
+                tickfont=dict(size=14, color= "white", family=font_family)  # Change "red" to any color you like
+            ),
+            yaxis=dict(
+                tickfont=dict(color="white")
+            )
+
+        )
+
     # Update layout with increased height, font size, and grid lines
     fig.update_layout(
         title="Cost of Selected Methods",
         xaxis={'title': 'Category'},
         yaxis={
             'title': 'Cost',
-            'range': [0, 10],  # Adjust y-axis range for smaller prices
+            'range': [0, 12],  # Adjust y-axis range for smaller prices
             'gridcolor': 'darkgray'  # Grid line color
         },
         barmode='group',  # Group bars side by side

@@ -9,6 +9,9 @@ from materials import *
 # Create Dash app
 app = dash.Dash(__name__)
 
+#this is necessary for deployment on render
+server = app.server
+
 # Load data
 data = pd.read_excel("DATA_EMMA.xlsx", sheet_name=11)
 

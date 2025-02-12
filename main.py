@@ -4,6 +4,7 @@
 #import dash
 #from dash import dcc, html, Input, Output, callback
 
+from revenueData import *
 from materials import *
 
 # Create Dash app
@@ -21,7 +22,8 @@ filtered_data = data[["Unnamed: 14", "Method", "Cost"]]
 # Extract the unique labels
 labels = filtered_data["Unnamed: 14"].dropna().unique()
 
-# Group Data
+# assign data to fitting name
+# i.e, coverglass has coverglass data, etc..
 coverGlass = filtered_data.iloc[0:3] #.iloc[num:num] extracts corresponding data
 backContact = filtered_data.iloc[3:6]
 Absorber = filtered_data.iloc[6:10]
@@ -79,6 +81,8 @@ def update_graph(coverGlass_method, backContact_method, Absorber_method, etl_met
     total_cost = coverGlass_cost + backContact_cost + Absorber_cost + etl_cost
     formatted_total_cost = round(total_cost, 2)
 
+
+    # round costs to hundredths
     coverGlassCost = round(coverGlass_row['Cost'].values[0], 2)
     backContactCost = round(backContact_row['Cost'].values[0], 2)
     absorberCost = round(Absorber_row['Cost'].values[0], 2)
@@ -170,7 +174,7 @@ def update_graph(coverGlass_method, backContact_method, Absorber_method, etl_met
         xaxis={'title': 'Category'},
         yaxis={
             'title': 'Cost',
-            'range': [0, 12],  # Adjust y-axis range for smaller prices
+            'range': [0, 15],  # Adjust y-axis range for smaller prices
             'gridcolor': 'darkgray'  # Grid line color
         },
         barmode='group',  # Group bars side by side
@@ -198,4 +202,4 @@ def update_graph(coverGlass_method, backContact_method, Absorber_method, etl_met
 
 # Run the app
 if __name__ == "__main__":
-    app.run_server(debug=True, host="0.0.0.0", port=8000)
+    app.run_server(debug=True)

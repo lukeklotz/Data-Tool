@@ -4,6 +4,7 @@
 #import dash
 #from dash import dcc, html, Input, Output, callback
 
+import os
 from revenueData import *
 from materials import *
 
@@ -202,4 +203,5 @@ def update_graph(coverGlass_method, backContact_method, Absorber_method, etl_met
 
 # Run the app
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000))) #use for render hosting
+    #app.run_server(debug=True) #use for local development

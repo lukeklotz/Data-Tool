@@ -1,85 +1,36 @@
-#import pandas as pd
-#import plotly.express as px
-#import plotly.graph_objects as go
-#import dash
-#from dash import dcc, html, Input, Output, callback
+import plotly.graph_objects as go
 
-import os
-from revenueData import *
-from materials import *
+def create_bar_chart(coverGlass, backContact, Absorber, etl, font_family, font_color, bg_color):
+    fig = go.Figure()
 
-# Create Dash app
-app = dash.Dash(__name__)
+    # Get list of methods from each group
+    coverGlass_methods = coverGlass["Method"].tolist()
+    backContact_methods = backContact["Method"].tolist()
+    Absorber_methods = Absorber["Method"].tolist()
+    etl_methods = etl["Method"].tolist()
 
-#this is necessary for deployment on render
-server = app.server
+   # Get the selected rows based on the method
+    coverGlass_row = coverGlass[coverGlass["Method"] == coverGlass_methods]
+    backContact_row = backContact[backContact["Method"] == backContact_methods]
+    Absorber_row = Absorber[Absorber["Method"] == Absorber_methods]
+    etl_row = etl[etl["Method"] == etl_methods]
 
-#load data
-data = Data()
-
-# group data
-coverGlass = data.getCoverGlass()
-backContact = data.getBackContact() 
-absorber = data.getAbsorber() 
-etl = data.getEtl() 
-
-#print(coverGlass["Cost"].values[0] + coverGlass["Cost"].values[1])
-
-#print(coverGlass_methods["Cost"].values[2])
-
-#drop down and background styles
-width = '70%'
-dd_color = '#353431'
-bg_color = '#23221B'
-background_color = '#8E9FA3'
-
-#bar graph styles
-font_color = "#afa732"
-font_family = "Courier New"
-
-
-displayMaterials(app)
-
-#displays bargraph. 
-# Contents of this function are in barGraph.py
-
-displayBarGraph(app, coverGlass, backContact, absorber, etl, width, dd_color, font_color, bg_color)
-
-@app.callback(
-        Output('cost-bar-chart', 'figure'),
-        [
-            Input('coverGlass-dropdown', 'value'),
-            Input('backContact-dropdown', 'value'),
-            Input('Absorber-dropdown', 'value'),
-            Input('etl-dropdown', 'value')
-        ]
-    )
-
-def update_graph(coverGlass, backContact, absorber, etl):
-    # Get the selected rows based on the method
-    '''
-    coverGlass_row = coverGlass[coverGlass["Method"] == coverGlass_method]
-    backContact_row = backContact[backContact["Method"] == backContact_method]
-    Absorber_row = Absorber[Absorber["Method"] == Absorber_method]
-    etl_row = etl[etl["Method"] == etl_method]
-    
     # Extract the costs
-    coverGlass_cost = coverGlass_methods["Cost"].values[0]
-    backContact_cost = backContact_methods["Cost"].values[0]
-    Absorber_cost = Absorber_methods["Cost"].values[0]
-    etl_cost = etl_methods["Cost"].values[0]
+    coverGlass_cost = coverGlass_row["Cost"].values[0]
+    backContact_cost = backContact_row["Cost"].values[0]
+    Absorber_cost = Absorber_row["Cost"].values[0]
+    etl_cost = etl_row["Cost"].values[0]
 
     total_cost = coverGlass_cost + backContact_cost + Absorber_cost + etl_cost
     formatted_total_cost = round(total_cost, 2)
-    
+
+
     # round costs to hundredths
     coverGlassCost = round(coverGlass_row['Cost'].values[0], 2)
     backContactCost = round(backContact_row['Cost'].values[0], 2)
     absorberCost = round(Absorber_row['Cost'].values[0], 2)
     etlCost = round(etl_row['Cost'].values[0], 2)
-    ''' 
-
-    print(type(coverGlass))
+    
     # Create the bar chart
     fig = go.Figure()
 
@@ -87,62 +38,62 @@ def update_graph(coverGlass, backContact, absorber, etl):
 
     fig.add_trace(go.Bar(
         x=["Cover Glass"],
-        y=[coverGlassValue],
+        y=[coverGlass_row["Cost"].values[0]],
         name="Cover Glass",
         marker=dict(color='red',
                     line=dict(width=2, color="black")),      # color
-        text=[f"${coverGlass["Cost"].values[0]}"],         # cost label $x.xx
+        text=[f"${coverGlassCost}"],         # cost label $x.xx
         textposition="outside", 
         textfont=bar_title_font_style        # font style
     ))
 
     fig.add_trace(go.Bar(
         x=["Back Contact"],
-        y=[backContact["Cost"].values[0]],
+        y=[backContact_row["Cost"].values[0]],
         name="Back Contact",
         marker=dict(color='orange',
                     line=dict(width=2, color="black")),                 # color
-        text=[f"${backContact["Cost"].values[0]}"],                    # cost
+        text=[f"${backContactCost}"],                    # cost
         textposition="outside",  
         textfont=bar_title_font_style,                   # font style
     ))
 
     fig.add_trace(go.Bar(
         x=["Absorber"],
-        y=[absorber["Cost"].values[0]],
+        y=[Absorber_row["Cost"].values[0]],
         name="Absorber",
         marker=dict(color='lightblue',
                 line=dict(width=2, color="black")),                 # color
-        text=[f"${absorber["Cost"].values[0]}"],                       # cost
+        text=[f"${absorberCost}"],                       # cost
         textposition="outside", 
         textfont=bar_title_font_style,                   # font style
     ))
 
     fig.add_trace(go.Bar(
         x=["ETL"],
-        y=[etl["Cost"].values[0]],
+        y=[etl_row["Cost"].values[0]],
         name="ETL",
         marker=dict(color='yellow',
                     line=dict(width=2, color="black")),                  # color
-        text=[f"${etl["Cost"].values[0]}"],                       # cost
+        text=[f"${etlCost}"],                       # cost
         textposition="outside",                     
         textfont=bar_title_font_style               # font style
     ))
 
     fig.add_trace(go.Bar(
         x=["Total"],
-        y=["formatted_total_cost"],
+        y=[formatted_total_cost],
         name="Total Cost",
         marker=dict(color='darkgreen',
                     line=dict(width=2, color="black")),
-        text=[f"$formatted_total_cost"],
+        text=[f"${formatted_total_cost}"],
         textposition="outside",
         textfont=bar_title_font_style,
     ))
 
      # Add annotation for the total cost
     fig.add_annotation(
-        text=f"Total Cost: $formatted_total_cost",
+        text=f"Total Cost: ${formatted_total_cost}",
         xref="paper", yref="paper",
         x=1.29, y=0.0,
         showarrow=False,
@@ -191,9 +142,3 @@ def update_graph(coverGlass, backContact, absorber, etl):
     )
     
     return fig
-
-
-# Run the app
-if __name__ == "__main__":
-    #app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000))) #use for render hosting
-    app.run_server(debug=True) #use for local development

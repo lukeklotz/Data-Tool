@@ -2,6 +2,7 @@ from data import *
 
 def displayBarGraph(app, coverGlass, backContact, absorber, etl, width, dd_color, font_color, bg_color):
 
+    print(f"coverGlass: {coverGlass["Cost"].values}")
     app.layout = html.Div([
         
         html.Div([

@@ -2,7 +2,7 @@
 # This file provides supporting functions sucg as getters and formatters
 # as of 02/17/2025, these files support the data class
 
-from materials import *
+from costGraphStyle import * 
 
 def formatTotalCost(coverGlass_cost, backContact_cost, absorber_cost, etl_cost):
 
@@ -38,7 +38,7 @@ def getAbsorberCost(absorber_method):
     absorber_row = absorber[absorber["Method"] == absorber_method]
     absorber_cost = absorber_row["Cost"].values[0]
 
-    return absorber_cost
+    return round(absorber_cost, 2)
 
 def getEtlCost(etl_method):
     data = Data()
@@ -47,5 +47,5 @@ def getEtlCost(etl_method):
     etl_row = etl[etl["Method"] == etl_method]
     etl_cost = etl_row["Cost"].values[0]
 
-    return etl_cost
+    return round(etl_cost, 2)
  

@@ -16,13 +16,7 @@ app = dash.Dash(__name__)
 server = app.server
 
 #load data
-data = Data()
-
-# group data
-coverGlass  = data.getCoverGlass()
-backContact = data.getBackContact() 
-absorber    = data.getAbsorber() 
-etl         = data.getEtl() 
+costData = Data()
 
 #drop down and background styles
 width            = '70%'
@@ -34,10 +28,10 @@ background_color = '#8E9FA3'
 font_color  = "#afa732"
 font_family = "Courier New"
 
-# Contents of this function are in barGraph.py
-displayCostGraph(app, coverGlass, backContact, absorber, etl, width, dd_color, font_color, bg_color)
+displayCostGraph(app, costData)
 
 update_cost_graph(app)
+update_revenue_graph(app)
 
 # Run the app
 if __name__ == "__main__":

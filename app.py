@@ -8,7 +8,6 @@ import os
 from revenueData import *
 from materials import *
 
-# Create Dash app
 app = dash.Dash(__name__)
 
 #this is necessary for deployment on render
@@ -23,10 +22,6 @@ backContact = data.getBackContact()
 absorber = data.getAbsorber() 
 etl = data.getEtl() 
 
-#print(coverGlass["Cost"].values[0] + coverGlass["Cost"].values[1])
-
-#print(coverGlass_methods["Cost"].values[2])
-
 #drop down and background styles
 width = '70%'
 dd_color = '#353431'
@@ -37,11 +32,9 @@ background_color = '#8E9FA3'
 font_color = "#afa732"
 font_family = "Courier New"
 
-
 displayMaterials(app)
 
 #displays bargraph. 
-# Contents of this function are in barGraph.py
 
 displayBarGraph(app, coverGlass, backContact, absorber, etl, width, dd_color, font_color, bg_color)
 
@@ -56,38 +49,20 @@ displayBarGraph(app, coverGlass, backContact, absorber, etl, width, dd_color, fo
     )
 
 def update_graph(coverGlass, backContact, absorber, etl):
-    # Get the selected rows based on the method
-    '''
-    coverGlass_row = coverGlass[coverGlass["Method"] == coverGlass_method]
-    backContact_row = backContact[backContact["Method"] == backContact_method]
-    Absorber_row = Absorber[Absorber["Method"] == Absorber_method]
-    etl_row = etl[etl["Method"] == etl_method]
-    
-    # Extract the costs
-    coverGlass_cost = coverGlass_methods["Cost"].values[0]
-    backContact_cost = backContact_methods["Cost"].values[0]
-    Absorber_cost = Absorber_methods["Cost"].values[0]
-    etl_cost = etl_methods["Cost"].values[0]
 
-    total_cost = coverGlass_cost + backContact_cost + Absorber_cost + etl_cost
-    formatted_total_cost = round(total_cost, 2)
-    
-    # round costs to hundredths
-    coverGlassCost = round(coverGlass_row['Cost'].values[0], 2)
-    backContactCost = round(backContact_row['Cost'].values[0], 2)
-    absorberCost = round(Absorber_row['Cost'].values[0], 2)
-    etlCost = round(etl_row['Cost'].values[0], 2)
-    ''' 
-
-    print(type(coverGlass))
     # Create the bar chart
     fig = go.Figure()
+
+    coverGlass = data.getCoverGlass()
+    backContact = data.getBackContact() 
+    absorber = data.getAbsorber() 
+    etl = data.getEtl() 
 
     bar_title_font_style = dict(size=12, color="black", family=font_family)
 
     fig.add_trace(go.Bar(
         x=["Cover Glass"],
-        y=[coverGlassValue],
+        y=[coverGlass["Cost"].values[0]],
         name="Cover Glass",
         marker=dict(color='red',
                     line=dict(width=2, color="black")),      # color

@@ -1,3 +1,4 @@
+
 body{
     margin: 0;
 }
@@ -18,8 +19,6 @@ body{
     border-radius: 15px;
     padding: 10px;
 }
-
-
 
 /* header styling */
 
@@ -71,4 +70,43 @@ h1 {
 .box-image{
     height: 80%;
     width: 95%;
+}
+
+
+.dd-width-padding {
+    width: 30%;
+    padding: 20px;
+}
+
+.drop-down-menu{
+    width: 50%;
+    padding-left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #353431;
+    color: #afa732;        /*text color*/
+}
+
+.graph-and-dropdown-container{
+    background: #353431; 
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 90%;
+    border-radius: 15px;
+    border: solid black 2px;
+    padding: 25px;
+    margin-bottom: 50px;
+}
+
+.background{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: #23221B;
+    padding: 0;
+    margin: 0;
 }

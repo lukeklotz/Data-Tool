@@ -6,7 +6,8 @@
 
 import os
 from revenueData import *
-from materials import *
+from buildCostChart import *
+#from utils import *
 
 app = dash.Dash(__name__)
 
@@ -14,6 +15,7 @@ app = dash.Dash(__name__)
 server = app.server
 
 #load data
+<<<<<<< HEAD
 data = Data()
 
 # group data
@@ -21,17 +23,21 @@ coverGlass = data.getCoverGlass()
 backContact = data.getBackContact() 
 absorber = data.getAbsorber() 
 etl = data.getEtl() 
+=======
+costData = Data()
+>>>>>>> 1b3524d1d217fbb31407e1f314c6ddbbeffefd3c
 
 #drop down and background styles
-width = '70%'
-dd_color = '#353431'
-bg_color = '#23221B'
+width            = '70%'
+dd_color         = '#353431'
+bg_color         = '#23221B'
 background_color = '#8E9FA3'
 
 #bar graph styles
-font_color = "#afa732"
+font_color  = "#afa732"
 font_family = "Courier New"
 
+<<<<<<< HEAD
 displayMaterials(app)
 
 #displays bargraph. 
@@ -167,6 +173,12 @@ def update_graph(coverGlass, backContact, absorber, etl):
     
     return fig
 
+=======
+displayCostGraph(app, costData)
+
+update_cost_graph(app)
+update_revenue_graph(app)
+>>>>>>> 1b3524d1d217fbb31407e1f314c6ddbbeffefd3c
 
 # Run the app
 if __name__ == "__main__":

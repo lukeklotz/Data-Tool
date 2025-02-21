@@ -23,6 +23,7 @@ absorber = data.getAbsorber()
 etl = data.getEtl() 
 
 costData = Data()
+revData = revenueData()
 
 #drop down and background styles
 width            = '70%'
@@ -34,7 +35,7 @@ background_color = '#8E9FA3'
 font_color  = "#afa732"
 font_family = "Courier New"
 
-displayCostGraph(app, costData)
+displayCostGraph(app, costData, revData)
 
 update_cost_graph(app)
 update_revenue_graph(app)

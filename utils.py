@@ -3,6 +3,7 @@
 # as of 02/17/2025, these files support the data class
 
 from costGraphStyle import * 
+from revenueData import *
 
 def formatTotalCost(coverGlass_cost, backContact_cost, absorber_cost, etl_cost):
 

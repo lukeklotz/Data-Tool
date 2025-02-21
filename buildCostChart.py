@@ -101,7 +101,7 @@ def update_cost_graph(app):
         fig.update_layout(
             title="Cost of Selected Methods",
             xaxis={'title': 'Category'},
-            yaxis={'title': 'Cost', 'range': [0, 13], 'gridcolor': 'darkgray'},
+            yaxis={'title': 'Cost', 'range': [0, 16], 'gridcolor': 'darkgray'},
             barmode='group',
             height=600,
             width=800,
@@ -116,6 +116,7 @@ def update_cost_graph(app):
         return fig
     
 def update_revenue_graph(app):
+    rev_data = revenueData()  
 
     @app.callback(
         Output('cost-revenue-chart', 'figure'),
@@ -123,19 +124,20 @@ def update_revenue_graph(app):
             Input('c-dropdown', 'value'),
             Input('b-dropdown', 'value'),
             Input('A-dropdown', 'value'),
-            Input('e-dropdown', 'value')
+            Input('e-dropdown', 'value')  
         ]
     )
+    def update_graph(coverGlass_method, backContact_method, absorber_method, glass_method):
 
-    def update_graph(coverGlass_method, backContact_method, absorber_method, etl_method):
-
-        coverGlassCost = getCoverGlassCost(coverGlass_method)
-        backContactCost = getBackContactCost(backContact_method)
-        absorberCost = getAbsorberCost(absorber_method)
-        etlCost = getEtlCost(etl_method)
-
-        formatted_total_cost = formatTotalCost(coverGlassCost, backContactCost, absorberCost, etlCost)
         
+        coverGlassCost = rev_data.getCoverGlassRev(coverGlass_method)
+        backContactCost = rev_data.getBackContactRev(backContact_method)
+        absorberCost = rev_data.getAbsorberRev(absorber_method)
+        glassCost = rev_data.getGlassRev(glass_method)
+
+        # Calculate total cost
+        formatted_total_cost = coverGlassCost + backContactCost + absorberCost + glassCost
+
         # Create the bar chart
         fig = go.Figure()
 
@@ -146,7 +148,7 @@ def update_revenue_graph(app):
             y=[coverGlassCost],
             name="Cover Glass",
             marker=dict(color='red', line=dict(width=2, color="black")),
-            text=[f"${coverGlassCost}"],
+            text=[f"${coverGlassCost:.2f}"],
             textposition="outside", 
             textfont=bar_title_font_style
         ))
@@ -156,7 +158,7 @@ def update_revenue_graph(app):
             y=[backContactCost],
             name="Back Contact",
             marker=dict(color='orange', line=dict(width=2, color="black")),
-            text=[f"${backContactCost}"],
+            text=[f"${backContactCost:.2f}"],
             textposition="outside",  
             textfont=bar_title_font_style
         ))
@@ -166,17 +168,17 @@ def update_revenue_graph(app):
             y=[absorberCost],
             name="Absorber",
             marker=dict(color='lightblue', line=dict(width=2, color="black")),
-            text=[f"${absorberCost}"],
+            text=[f"${absorberCost:.2f}"],
             textposition="outside", 
             textfont=bar_title_font_style
         ))
 
         fig.add_trace(go.Bar(
-            x=["ETL"],
-            y=[etlCost],
-            name="ETL",
+            x=["Glass"],
+            y=[glassCost],
+            name="Glass",
             marker=dict(color='yellow', line=dict(width=2, color="black")),
-            text=[f"${etlCost}"],
+            text=[f"${glassCost:.2f}"],
             textposition="outside",  
             textfont=bar_title_font_style
         ))
@@ -186,14 +188,14 @@ def update_revenue_graph(app):
             y=[formatted_total_cost],
             name="Total Cost",
             marker=dict(color='darkgreen', line=dict(width=2, color="black")),
-            text=[f"${formatted_total_cost}"],
+            text=[f"${formatted_total_cost:.2f}"],
             textposition="outside",
             textfont=bar_title_font_style
         ))
 
         # Update layout for the graph
         fig.add_annotation(
-            text=f"Total Cost: ${formatted_total_cost}",
+            text=f"Total Cost: ${formatted_total_cost:.2f}",
             xref="paper", yref="paper",
             x=1.29, y=0.0,
             showarrow=False,
@@ -204,7 +206,7 @@ def update_revenue_graph(app):
         fig.update_layout(
             title="Cost of Selected Methods",
             xaxis={'title': 'Category'},
-            yaxis={'title': 'Cost', 'range': [0, 13], 'gridcolor': 'darkgray'},
+            yaxis={'title': 'Cost', 'range': [0, 20], 'gridcolor': 'darkgray'},
             barmode='group',
             height=600,
             width=800,

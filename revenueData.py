@@ -13,15 +13,28 @@ class revenueData:
         self.absorberRev    = {"PbI":0.53, "PbSO":0.01}
         self.glassRev       = {"Glass":9.38}
 
-    def getCoverGlassRev(self):
+    def getCoverGlass(self):
         return self.coverGlassRev
 
-    def getBackContactRev(self):
+    def getBackContact(self):
         return self.backContactRev
     
-    def getAbsorberRev(self):
+    def getAbsorber(self):
         return self.absorberRev
 
-    def getGlassRev(self):
+    def getGlass(self):
         return self.glassRev
+    
+
+    def getCoverGlassRev(self, method):
+        return self.coverGlassRev.get(method, 0)
+
+    def getBackContactRev(self, method):
+        return self.backContactRev.get(method, 0)
+
+    def getAbsorberRev(self, method):
+        return self.absorberRev.get(method, 0)
+
+    def getGlassRev(self, method):
+        return self.glassRev.get(method, 0)
 

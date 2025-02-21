@@ -1,12 +1,19 @@
 from costData import *
 
-def displayCostGraph(app, costData):
+def displayCostGraph(app, costData, revData):
 
-    # group data
+    # group cost data
     coverGlass  = costData.getCoverGlass()
     backContact = costData.getBackContact() 
     absorber    = costData.getAbsorber() 
     etl         = costData.getEtl() 
+
+    # group revenue data
+
+    coverGlassRev = revData.getCoverGlassRev()
+    backContectRev = revData.getBackContactRev()
+    absorberRev = revData.getAbsorberRev()
+    glassRev = revData.getGlassRev()
 
     #drop down and background styles
     width            = '70%'

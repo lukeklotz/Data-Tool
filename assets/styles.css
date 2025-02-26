@@ -1,112 +1,144 @@
-
-body{
-    margin: 0;
-}
-
-.dropdown {
-    color: #afa732; 
-    font-family: 'Courier New', Courier, monospace;
-    font-size: medium;
-}
-
-.plot-container {
-    border-radius: 15px; 
-    overflow: hidden;
-}
-
-.main-graph {
-    background-color: lightblue;
-    border-radius: 15px;
-    padding: 10px;
-}
-
-/* header styling */
-
-h1 {
-    color: #afa732; 
-    font-family: 'Courier New', Courier, monospace; 
-}
-
-.top {
-
-    font-family: 'Courier New', Courier, monospace;
-    font-size: medium;
-}
-
-/* materals styling */
-
-.materials-container {
-    display: flex;  
-    justify-content: center;  
-    align-items: center;      
-    width: 80vw;
-    padding: 2vh;
-}
-
-.box-common {
-    background-color: #353431; 
-    color: white;  
-    display: flex; 
-    justify-content: center;  
-    align-items: center;      
-    flex-direction: column;
-    border-radius: 10px;  
-    border: solid black 2px;
-    height: 40vh;
-    width: 60vw;
-    padding: 10px;
-    margin: 15px;
-}
-
-.box-top{
-    align-items: start;      
-}
-
-.box-mid {
-    align-items: center;       
-}
-
-
-.box-image{
-    height: 80%;
-    width: 95%;
-}
-
-
-.dd-width-padding {
-    width: 30%;
-    padding: 20px;
-}
-
-.drop-down-menu{
-    width: 50%;
-    padding-left: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #353431;
-    color: #afa732;        /*text color*/
-}
-
-.graph-and-dropdown-container{
-    background: #353431; 
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    width: 90%;
-    border-radius: 15px;
-    border: solid black 2px;
-    padding: 25px;
-    margin-bottom: 50px;
-}
-
-.background{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    background: #23221B;
-    padding: 0;
-    margin: 0;
-}
+/* CSS Variables */
+:root {
+    /* Color palette */
+    --primary-bg: #23221B;
+    --secondary-bg: #353431;
+    --accent-color: #afa732;
+    --text-light: #ffffff;
+    --text-dark: #333333;
+    --border-color: #000000;
+    
+    /* Typography */
+    --font-main: 'Courier New', Courier, monospace;
+    
+    /* Spacing */
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    
+    /* Border radius */
+    --radius-sm: 10px;
+    --radius-md: 15px;
+  }
+  
+  /* Your CSS with variables applied */
+  body{
+      margin: 0;
+  }
+  
+  .dropdown {
+      color: var(--accent-color); 
+      font-family: var(--font-main);
+      font-size: medium;
+  }
+  
+  .plot-container {
+      border-radius: var(--radius-md); 
+      overflow: hidden;
+  }
+  
+  .main-graph {
+      background-color: lightblue;
+      border-radius: var(--radius-md);
+      padding: var(--spacing-sm);
+  }
+  
+  /* header styling */
+  
+  h1 {
+      color: var(--accent-color); 
+      font-family: var(--font-main); 
+  }
+  
+  .top {
+      font-family: var(--font-main);
+      font-size: medium;
+  }
+  
+  /* materals styling */
+  
+  .materials-container {
+      display: flex;  
+      justify-content: center;  
+      align-items: center;      
+      width: 80vw;
+      padding: 2vh;
+  }
+  
+  .box-image {
+      max-width: 100%; /* Ensures image doesn't overflow its container */
+      max-height: 80%; /* Limits height to leave room for the heading */
+      width: auto;     /* Maintains aspect ratio */
+      height: auto;    /* Maintains aspect ratio */
+      object-fit: contain; /* Ensures the entire image is visible */
+  }
+  
+  /* Modify the box-common class */
+  .box-common {
+      background-color: var(--secondary-bg); 
+      color: var(--text-light);  
+      display: flex; 
+      justify-content: center;  
+      align-items: center;      
+      flex-direction: column;
+      border-radius: var(--radius-sm);  
+      border: solid var(--border-color) 2px;
+      min-height: 300px; /* Set a minimum height instead of a percentage */
+      width: 60vw;
+      padding: var(--spacing-md);
+      margin: 15px;
+      overflow: hidden; /* Prevents content from spilling out */
+  }
+  
+  .box-top{
+      align-items: start;      
+  }
+  
+  .box-mid {
+      align-items: center;       
+  }
+  
+  
+  .box-image{
+      height: 80%;
+      width: 95%;
+  }
+  
+  
+  .dd-width-padding {
+      width: 30%;
+      padding: var(--spacing-md);
+  }
+  
+  .drop-down-menu{
+      width: 50%;
+      padding-left: var(--spacing-lg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--secondary-bg);
+      color: var(--accent-color);        /*text color*/
+  }
+  
+  .graph-and-dropdown-container{
+      background: var(--secondary-bg); 
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      width: 90%;
+      border-radius: var(--radius-md);
+      border: solid var(--border-color) 2px;
+      padding: 25px;
+      margin-bottom: 50px;
+  }
+  
+  .background{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      background: var(--primary-bg);
+      padding: 0;
+      margin: 0;
+  }

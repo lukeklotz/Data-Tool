@@ -88,9 +88,9 @@ def update_cost_graph(app):
             textfont=bar_title_font_style
         ))
 
-        # Update layout for the graph
+        # Update layout for the total
         fig.add_annotation(
-            text=f"Total Cost: ${formatted_total_cost}",
+            text=f"Total: ${formatted_total_cost}",
             xref="paper", yref="paper",
             x=1.29, y=0.0,
             showarrow=False,
@@ -98,13 +98,22 @@ def update_cost_graph(app):
             align="center"
         )
 
+        # Update graph layout
         fig.update_layout(
             title="Cost of Selected Methods",
-            xaxis={'title': 'Category'},
-            yaxis={'title': 'Cost', 'range': [0, 16], 'gridcolor': 'darkgray'},
+            xaxis={
+                'title': 'Method',
+                'tickfont': dict(color="#afa732", family=font_family)  # Add this line
+            },
+            yaxis={
+                'title': 'Cost', 
+                'range': [0, 16], 
+                'gridcolor': 'darkgray',
+                'tickfont': dict(color="#afa732", family=font_family)  # Optional: match y-axis tick labels too
+            },
             barmode='group',
-            height=600,
-            width=800,
+            height=500,
+            width=700,
             margin=dict(t=80, b=40, l=40, r=40),
             title_font=dict(size=24, color=font_color, family=font_family),
             xaxis_title_font=dict(size=18, color=font_color, family=font_family),
@@ -195,7 +204,7 @@ def update_revenue_graph(app):
 
         # Update layout for the graph
         fig.add_annotation(
-            text=f"Total Cost: ${formatted_total_cost:.2f}",
+            text=f"Total: ${formatted_total_cost:.2f}",
             xref="paper", yref="paper",
             x=1.29, y=0.0,
             showarrow=False,
@@ -204,13 +213,21 @@ def update_revenue_graph(app):
         )
 
         fig.update_layout(
-            title="Cost of Selected Methods",
-            xaxis={'title': 'Category'},
-            yaxis={'title': 'Cost', 'range': [0, 20], 'gridcolor': 'darkgray'},
+            title="Revenue of Selected Methods",
+            xaxis={
+                'title': 'Method',
+                'tickfont': dict(color="#afa732", family=font_family)  # Add this line
+            },
+            yaxis={
+                'title': 'Revenue', 
+                'range': [0, 20], 
+                'gridcolor': 'darkgray',
+                'tickfont': dict(color="#afa732", family=font_family)  # Optional: match y-axis tick labels too
+            },
             barmode='group',
-            height=600,
-            width=800,
             margin=dict(t=80, b=40, l=40, r=40),
+            height=500,
+            width=700,
             title_font=dict(size=24, color=font_color, family=font_family),
             xaxis_title_font=dict(size=18, color=font_color, family=font_family),
             yaxis_title_font=dict(size=18, color=font_color, family=font_family),

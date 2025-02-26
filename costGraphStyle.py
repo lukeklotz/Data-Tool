@@ -10,10 +10,10 @@ def displayCostGraph(app, costData, revData):
 
     # group revenue data
 
-    coverGlassRev = revData.getCoverGlass()
+    coverGlassRev  = revData.getCoverGlass()
     backContactRev = revData.getBackContact()
-    absorberRev = revData.getAbsorber()
-    glassRev = revData.getGlass()
+    absorberRev    = revData.getAbsorber()
+    glassRev       = revData.getGlass()
 
     #drop down and background styles
     width            = '70%'
@@ -130,7 +130,8 @@ def displayCostGraph(app, costData, revData):
         ], className="dd-width-padding"), 
 
         html.Div([
-            dcc.Graph(id='cost-revenue-chart')
+            dcc.Graph(
+                id='cost-revenue-chart',)
         ], className="drop-down-menu"),
     ], className="graph-and-dropdown-container")
 

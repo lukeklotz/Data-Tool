@@ -52,22 +52,27 @@
   
   .top {
       font-family: var(--font-main);
-      font-size: medium;
+      font-size: large;
   }
   
   /* materals styling */
   
-  .materials-container {
+  .top-row-container {
       display: flex;  
-      justify-content: center;  
+      justify-content: start;  
       align-items: center;      
-      width: 80vw;
-      padding: 2vh;
+      width: 82.8vw;
+      padding: 1vh;
+  }
+
+  .materials-container{
+    display: flex;
+    flex-direction: row;
   }
   
   .box-image {
-      max-width: 100%; /* Ensures image doesn't overflow its container */
-      max-height: 80%; /* Limits height to leave room for the heading */
+      max-width: 95%; 
+      max-height: 95%; /* Limits height to leave room for the heading */
       width: auto;     /* Maintains aspect ratio */
       height: auto;    /* Maintains aspect ratio */
       object-fit: contain; /* Ensures the entire image is visible */
@@ -83,8 +88,8 @@
       flex-direction: column;
       border-radius: var(--radius-sm);  
       border: solid var(--border-color) 2px;
-      min-height: 300px; /* Set a minimum height instead of a percentage */
-      width: 60vw;
+      min-height: 500px; /* Set a minimum height instead of a percentage */
+      width: 100%;
       padding: var(--spacing-md);
       margin: 15px;
       overflow: hidden; /* Prevents content from spilling out */
@@ -125,7 +130,7 @@
       display: flex;
       align-items: flex-start;
       justify-content: center;
-      width: 90%;
+      width: 80%;
       border-radius: var(--radius-md);
       border: solid var(--border-color) 2px;
       padding: 25px;

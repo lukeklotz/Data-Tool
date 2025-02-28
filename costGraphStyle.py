@@ -36,7 +36,6 @@ def displayCostGraph(app, costData, revData):
                 html.P("4. The price of 1 kWh of energy was taken from the most up-to-date cost of industrial electricity at $0.073/kWh  ", className="top"),
                 html.P("5. The model build does not include frame, cables, and junctions. ", className="top"),
             ], className="box-common box-top"),
-        ], className="materials-container"),
 
         html.Div([
             html.Div([
@@ -47,7 +46,8 @@ def displayCostGraph(app, costData, revData):
                 html.H3("Step 2: Selection of Extraction Method", className="dropdown"),
                 html.Img(src="/assets/text.png", alt="img_2", className="box-image")
             ], className="box-common box-mid"),
-        ], className="materials-container"),
+            ], className="materials-container"),
+        ], className="top-row-container"),
 
     #cost graph styling
     html.Div([
@@ -101,7 +101,7 @@ def displayCostGraph(app, costData, revData):
                 id='c-dropdown',
                 options=[{'label': k, 'value': k} for k in coverGlassRev.keys()],
                 value=list(coverGlassRev.keys())[0],  # Default value
-                style={'width': '200px'}
+                style={'width': width}
             ),
 
             html.H4("Back Contact", className='dropdown'),
@@ -109,7 +109,7 @@ def displayCostGraph(app, costData, revData):
                 id='b-dropdown',
                 options=[{'label': k, 'value': k} for k in backContactRev.keys()],
                 value=list(backContactRev.keys())[0],
-                style={'width': '200px'}
+                style={'width': width}
             ),
 
             html.H4("Absorber", className='dropdown'),
@@ -117,7 +117,7 @@ def displayCostGraph(app, costData, revData):
                 id='A-dropdown',
                 options=[{'label': k, 'value': k} for k in absorberRev.keys()],
                 value=list(absorberRev.keys())[0],
-                style={'width': '200px'}
+                style={'width': width}
             ),
 
             html.H4("Glass", className='dropdown'),
@@ -125,7 +125,7 @@ def displayCostGraph(app, costData, revData):
                 id='e-dropdown',
                 options=[{'label': k, 'value': k} for k in glassRev.keys()],
                 value=list(glassRev.keys())[0],
-                style={'width': '200px'}
+                style={'width': width}
             ),
         ], className="dd-width-padding"), 
 

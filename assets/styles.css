@@ -64,7 +64,7 @@
   
   .top-row-container {
       display: flex;  
-      justify-content: start;  
+      justify-content: center;  
       align-items: center;      
       width: 82.8vw;
       padding: 1vh;
@@ -76,6 +76,10 @@
   }
 
   @media screen and (max-width: 1868px) {
+
+  .box-top{
+    max-width: 50%;
+  }
 
   .top-row-container{
     flex-direction: column;
@@ -120,7 +124,7 @@
   }
   
   .box-top{
-      align-items: start;      
+      align-items: center;      
   }
   
   .box-mid {

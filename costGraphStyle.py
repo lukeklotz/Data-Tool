@@ -39,11 +39,11 @@ def displayCostGraph(app, costData, revData):
 
         html.Div([
             html.Div([
-                html.H3("Step 1: Selection of Materials", className="dropdown"),
+                html.H3("Step 1: Selection of Materials", className="materials-title"),
                 html.Img(src="/assets/graphic.png", alt="img_1", className="box-image")
             ], className="box-common box-mid"),
             html.Div([
-                html.H3("Step 2: Selection of Extraction Method", className="dropdown"),
+                html.H3("Step 2: Selection of Extraction Method", className="materials-title"),
                 html.Img(src="/assets/text.png", alt="img_2", className="box-image")
             ], className="box-common box-mid"),
             ], className="materials-container"),
@@ -88,7 +88,7 @@ def displayCostGraph(app, costData, revData):
         ], className="dd-width-padding"), 
 
         html.Div([
-            dcc.Graph(id='cost-bar-chart')
+            dcc.Graph(id='cost-bar-chart'),
         ], className="drop-down-menu"),
 
     ], className="graph-and-dropdown-container"),

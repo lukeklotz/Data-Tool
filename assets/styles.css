@@ -21,17 +21,22 @@
     --radius-md: 15px;
   }
   
-  /* Your CSS with variables applied */
   body{
       margin: 0;
   }
   
-  .dropdown {
+  .materials-title {
       color: var(--accent-color); 
       font-family: var(--font-main);
-      font-size: medium;
+      font-size: 180%;
   }
-  
+ 
+  .dropdown{
+    color: var(--accent-color); 
+    font-family: var(--font-main);
+    font-size: 120%;
+  }
+
   .plot-container {
       border-radius: var(--radius-md); 
       overflow: hidden;
@@ -46,7 +51,7 @@
   /* header styling */
   
   h1 {
-      color: var(--accent-color); 
+      color: var(--accent-color);
       font-family: var(--font-main); 
   }
   
@@ -69,10 +74,25 @@
     display: flex;
     flex-direction: row;
   }
+
+  @media screen and (max-width: 1468px) {
+  .materials-container {
+    font-size: 90%;
+    max-height: 50%;
+    max-width: 50%;
+    flex-direction: column;
+  }
+
+  .box-image{
+    max-width: 100%;
+    max-height: 100%;
+    margin: 5px;
+  }
+}
   
   .box-image {
       max-width: 95%; 
-      max-height: 95%; /* Limits height to leave room for the heading */
+      max-height: 95%; 
       width: auto;     /* Maintains aspect ratio */
       height: auto;    /* Maintains aspect ratio */
       object-fit: contain; /* Ensures the entire image is visible */
@@ -88,7 +108,7 @@
       flex-direction: column;
       border-radius: var(--radius-sm);  
       border: solid var(--border-color) 2px;
-      min-height: 500px; /* Set a minimum height instead of a percentage */
+      min-height: 500px; 
       width: 100%;
       padding: var(--spacing-md);
       margin: 15px;
@@ -122,7 +142,7 @@
       justify-content: center;
       align-items: center;
       background: var(--secondary-bg);
-      color: var(--accent-color);        /*text color*/
+      color: var(--accent-color);       
   }
   
   .graph-and-dropdown-container{

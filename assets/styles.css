@@ -75,12 +75,16 @@
     flex-direction: row;
   }
 
-  @media screen and (max-width: 1468px) {
+  @media screen and (max-width: 1868px) {
+
+  .top-row-container{
+    flex-direction: column;
+  }
   .materials-container {
     font-size: 90%;
-    max-height: 50%;
-    max-width: 50%;
-    flex-direction: column;
+    max-height: 250%;
+    max-width: 250%;
+    flex-direction: row;
   }
 
   .box-image{

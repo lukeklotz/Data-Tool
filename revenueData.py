@@ -25,7 +25,6 @@ class revenueData:
     def getGlass(self):
         return self.glassRev
     
-
     def getCoverGlassRev(self, method):
         return self.coverGlassRev.get(method, 0)
 

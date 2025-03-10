@@ -7,6 +7,7 @@ width            = '70%'
 dd_color         = '#353431'
 bg_color         = '#23221B'
 background_color = '#8E9FA3'
+accent_color     = '#3d3c36'
 
 #bar graph styles
 font_color  = "#afa732"
@@ -105,27 +106,27 @@ def update_cost_graph(app):
                 xanchor='center',
             ),
             xaxis={
-                'title': 'Method',
-                'tickfont': dict(color="#afa732", family=font_family),
+                #'title': 'Method',
+                'tickfont': dict(color=font_color, family=font_family),
                 'showgrid': False,  # Remove vertical grid lines for cleaner look
-                'linecolor': "#afa732",  # Match axis line to text color
+                'linecolor': font_color,  # Match axis line to text color
                 'tickangle': 0,  # Angle labels for better readability if you have long method names
                 'ticks': 'outside',  # Place ticks outside
                 'tickwidth': 2,  # Make ticks more visible
-                'tickcolor': "#afa732"  # Match tick color to text
+                'tickcolor': font_color  # Match tick color to text
             },
             yaxis={
-                'title': 'Cost', 
+                'title': 'Cost $/m²', 
                 'range': [0, 16], 
-                'gridcolor': 'darkgray',
-                'tickfont': dict(color="#afa732", family=font_family),
+                'gridcolor': accent_color,
+                'tickfont': dict(color=font_color, family=font_family),
                 'tickprefix': '$',  # Add dollar sign for cost values
                 'tickmode': 'linear',
                 'dtick': 2,  # Tick every $2 for cleaner appearance
-                'linecolor': "#afa732",  # Match axis line to text color
+                'linecolor': font_color,  # Match axis line to text color
                 'ticks': 'outside',
                 'tickwidth': 2,
-                'tickcolor': "#afa732"
+                'tickcolor': font_color
             },
             barmode='group',
             bargap=0.15,  # Adjust spacing between bar groups
@@ -138,7 +139,7 @@ def update_cost_graph(app):
             legend=dict(
                 font=dict(size=14, color=font_color, family=font_family),
                 bgcolor='rgba(0,0,0,0.1)',  # Semi-transparent background
-                bordercolor="#afa732",
+                bordercolor=font_color,
                 borderwidth=1,
                 orientation='h',  # Horizontal legend
                 yanchor='top',
@@ -249,27 +250,26 @@ def update_revenue_graph(app):
                 xanchor='center',
             ),
             xaxis={
-                'title': 'Method',
-                'tickfont': dict(color="#afa732", family=font_family),
+                'tickfont': dict(color=font_color, family=font_family),
                 'showgrid': False,  # Remove vertical grid lines for cleaner look
-                'linecolor': "#afa732",  # Match axis line to text color
+                'linecolor': font_color,  # Match axis line to text color
                 'tickangle': 0,  # Angle labels for better readability if you have long method names
                 'ticks': 'outside',  # Place ticks outside
                 'tickwidth': 2,  # Make ticks more visible
-                'tickcolor': "#afa732"  # Match tick color to text
+                'tickcolor': font_color  # Match tick color to text
             },
             yaxis={
-                'title': 'Cost', 
+                'title': 'Revenue $/m²', 
                 'range': [0, 20], 
-                'gridcolor': 'darkgray',
-                'tickfont': dict(color="#afa732", family=font_family),
+                'gridcolor': accent_color,
+                'tickfont': dict(color=font_color, family=font_family),
                 'tickprefix': '$',  # Add dollar sign for cost values
                 'tickmode': 'linear',
                 'dtick': 2,  # Tick every $2 for cleaner appearance
-                'linecolor': "#afa732",  # Match axis line to text color
+                'linecolor': font_color,  # Match axis line to text color
                 'ticks': 'outside',
                 'tickwidth': 2,
-                'tickcolor': "#afa732"
+                'tickcolor': font_color,
             },
             barmode='group',
             bargap=0.15,  # Adjust spacing between bar groups
@@ -282,7 +282,7 @@ def update_revenue_graph(app):
             legend=dict(
                 font=dict(size=14, color=font_color, family=font_family),
                 bgcolor='rgba(0,0,0,0.1)',  # Semi-transparent background
-                bordercolor="#afa732",
+                bordercolor=font_color,
                 borderwidth=1,
                 orientation='h',  # Horizontal legend
                 yanchor='top',

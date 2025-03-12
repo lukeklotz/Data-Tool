@@ -15,25 +15,8 @@ app = dash.Dash(__name__)
 server = app.server
 
 #load data
-data = Data()
-
-coverGlass = data.getCoverGlass()
-backContact = data.getBackContact() 
-absorber = data.getAbsorber() 
-etl = data.getEtl() 
-
 costData = Data()
 revData = revenueData()
-
-#drop down and background styles
-width            = '70%'
-dd_color         = '#353431'
-bg_color         = '#23221B'
-background_color = '#8E9FA3'
-
-#bar graph styles
-font_color  = "#afa732"
-font_family = "Courier New"
 
 displayCostGraph(app, costData, revData)
 

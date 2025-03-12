@@ -15,7 +15,7 @@ app = dash.Dash(__name__)
 server = app.server
 
 #load data
-costData = Data()
+costData = costData()
 revData = revenueData()
 
 displayCostGraph(app, costData, revData)

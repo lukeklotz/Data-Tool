@@ -1,5 +1,7 @@
-from utils import *
 import plotly.graph_objects as go
+from costGraphStyle import * 
+from revenueData import *
+from utils import *
 
 
 #drop down and background styles
@@ -14,6 +16,7 @@ font_color  = "#afa732"
 font_family = "Courier New"
 
 def update_cost_graph(app):
+    cost = costData()    #extract data from costData class
 
     @app.callback(
         Output('cost-bar-chart', 'figure'),
@@ -25,14 +28,14 @@ def update_cost_graph(app):
         ]
     )
 
-    def update_graph(coverGlass_method, backContact_method, absorber_method, etl_method):
+    def update_graph(coverGlass_method, backContact_method, absorber_method, glass_method):
 
-        coverGlassCost = getCoverGlassCost(coverGlass_method)
-        backContactCost = getBackContactCost(backContact_method)
-        absorberCost = getAbsorberCost(absorber_method)
-        etlCost = getEtlCost(etl_method)
+        coverGlassCost = cost.getCoverGlassCost(coverGlass_method)
+        backContactCost = cost.getBackContactCost(backContact_method)
+        absorberCost = cost.getAbsorberCost(absorber_method)
+        glassCost = cost.getGlassCost(glass_method)
 
-        formatted_total_cost = formatTotalCost(coverGlassCost, backContactCost, absorberCost, etlCost)
+        formatted_total_cost = formatTotalCost(coverGlassCost, backContactCost, absorberCost, glassCost)
         
         # Create the bar chart
         fig = go.Figure()
@@ -71,10 +74,10 @@ def update_cost_graph(app):
 
         fig.add_trace(go.Bar(
             x=["ETL"],
-            y=[etlCost],
+            y=[glassCost],
             name="ETL",
             marker=dict(color='yellow', line=dict(width=2, color="black")),
-            text=[f"${etlCost}"],
+            text=[f"${glassCost}"],
             textposition="outside",  
             textfont=bar_title_font_style
         ))
@@ -156,7 +159,7 @@ def update_cost_graph(app):
         return fig
     
 def update_revenue_graph(app):
-    rev_data = revenueData()  
+    revData = revenueData()  
 
     @app.callback(
         Output('cost-revenue-chart', 'figure'),
@@ -170,10 +173,10 @@ def update_revenue_graph(app):
     def update_graph(coverGlass_method, backContact_method, absorber_method, glass_method):
 
         
-        coverGlassCost = rev_data.getCoverGlassRev(coverGlass_method)
-        backContactCost = rev_data.getBackContactRev(backContact_method)
-        absorberCost = rev_data.getAbsorberRev(absorber_method)
-        glassCost = rev_data.getGlassRev(glass_method)
+        coverGlassCost = revData.getCoverGlassRev(coverGlass_method)
+        backContactCost = revData.getBackContactRev(backContact_method)
+        absorberCost = revData.getAbsorberRev(absorber_method)
+        glassCost = revData.getGlassRev(glass_method)
 
         # Calculate total cost
         formatted_total_cost = coverGlassCost + backContactCost + absorberCost + glassCost

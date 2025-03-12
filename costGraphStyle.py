@@ -1,12 +1,12 @@
-from costData import *
+from costDataJuan import *
 
 def displayCostGraph(app, costData, revData):
 
     # group cost data
-    coverGlass  = costData.getCoverGlass()
-    backContact = costData.getBackContact() 
-    absorber    = costData.getAbsorber() 
-    etl         = costData.getEtl() 
+    coverGlassCost  = costData.getCoverGlass()
+    backContactCost = costData.getBackContact() 
+    absorberCost    = costData.getAbsorber() 
+    glassCost       = costData.getGlass()       
 
     # group revenue data
 
@@ -56,32 +56,32 @@ def displayCostGraph(app, costData, revData):
             html.H4("Cover Glass", className='dropdown'),
             dcc.Dropdown(
                 id='coverGlass-dropdown',
-                options=[{'label': method, 'value': method} for method in coverGlass["Method"].values],
-                value=coverGlass["Method"].values[0],  # Default value
+                options=[{'label': k, 'value': k} for k in coverGlassCost.keys()],
+                value=list(coverGlassCost.keys())[0],  # gets first value (default)
                 style={'width': width}
             ),
             
             html.H4("Back Contact", className='dropdown'),
             dcc.Dropdown(
                 id='backContact-dropdown',
-                options=[{'label': method, 'value': method} for method in backContact["Method"].values],
-                value=backContact["Method"].values[0],  # Default value
+                options=[{'label': k, 'value': k} for k in backContactCost.keys()],
+                value=list(backContactCost.keys())[0],   # gets first value (default)
                 style={'width': width}
             ),
             
             html.H4("Absorber", className='dropdown'),
             dcc.Dropdown(
                 id='Absorber-dropdown',
-                options=[{'label': method, 'value': method} for method in absorber["Method"].values],
-                value=absorber["Method"].values[0],  # Default value
+                options=[{'label': k, 'value': k} for k in absorberCost.keys()],
+                value=list(absorberCost.keys())[0],   # gets first value (default)
                 style={'width': width}
             ),
             
             html.H4("ETL/Coated Glass", className='dropdown'),
             dcc.Dropdown(
                 id='etl-dropdown',
-                options=[{'label': method, 'value': method} for method in etl["Method"].values],
-                value=etl["Method"].values[0],  # Default value
+                options=[{'label': k, 'value': k} for k in glassCost.keys()],
+                value=list(glassCost.keys())[0],   # gets first value (default)
                 style={'width': width}
             ),
             

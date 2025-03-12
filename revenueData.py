@@ -6,6 +6,8 @@
 #key           = materal NAME
 #value         = revenue AMOUNT
 
+from costDataJuan import *
+
 class revenueData:
     def __init__(self):
         self.coverGlassRev  = {"2-2.5mm Glass (Emma)":3.75}

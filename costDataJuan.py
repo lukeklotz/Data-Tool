@@ -6,7 +6,7 @@ from dash import dcc, html, Input, Output, callback
 
 class costData:
     def __init__(self):
-        self.coverGlassRev  = {}
+        self.coverGlassRev  = {"default":0.00}
         self.backContactRev = {
                                "Butylamine (BA) (Feng 2021)":               0.002669,
                                "Flange-Mount Immersion Heaters (Feng 2021)":0.0000116,
@@ -64,26 +64,26 @@ class costData:
                                "Thermal delamination (drying) (Bo Chen 2021)": 0.03025,
                               }
 
-    def getCoverGlassCost(self):
+    def getCoverGlass(self):
         return self.coverGlassRev
 
-    def getBackContactCost(self):
+    def getBackContact(self):
         return self.backContactRev
     
-    def getAbsorberCost(self):
+    def getAbsorber(self):
         return self.absorberRev
 
-    def getGlassCost(self):
+    def getGlass(self):
         return self.glassRev
     
-    def getCoverGlassRevData(self, method):
+    def getCoverGlassCost(self, method):
         return self.coverGlassRev.get(method, 0)
 
-    def getBackContactRevData(self, method):
+    def getBackContactCost(self, method):
         return self.backContactRev.get(method, 0)
 
-    def getAbsorberRevData(self, method):
+    def getAbsorberCost(self, method):
         return self.absorberRev.get(method, 0)
 
-    def getGlassRevData(self, method):
+    def getGlassCost(self, method):
         return self.glassRev.get(method, 0)

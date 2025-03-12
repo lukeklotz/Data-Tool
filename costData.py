@@ -22,3 +22,8 @@ class Data:
     def getEtl(self):
         return self.filtered_data.iloc[10:11]
     
+
+# 03/12/2025
+# this method of extracting data is now outdated
+# the only purpose of this file is to serve as a placeholder
+# until new datastructure for cost data is implemented

@@ -53,7 +53,7 @@ def update_cost_graph(app):
             x=["Back Contact"],
             y=[backContactCost],
             name="Back Contact",
-            marker=dict(color='orange', line=dict(width=2, color="black")),
+            marker=dict(color='blue', line=dict(width=2, color="black")),
             text=[f"${backContactCost}"],
             textposition="outside",  
             textfont=bar_title_font_style
@@ -197,7 +197,7 @@ def update_revenue_graph(app):
             x=["Back Contact"],
             y=[backContactCost],
             name="Back Contact",
-            marker=dict(color='orange', line=dict(width=2, color="black")),
+            marker=dict(color='blue', line=dict(width=2, color="black")),
             text=[f"${backContactCost:.2f}"],
             textposition="outside",  
             textfont=bar_title_font_style

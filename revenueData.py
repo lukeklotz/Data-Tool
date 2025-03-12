@@ -8,20 +8,20 @@
 
 class revenueData:
     def __init__(self):
-        self.coverGlassRev  = {"2-2.5mmGlass (Emma)":3.75}
+        self.coverGlassRev  = {"2-2.5mm Glass (Emma)":3.75}
         self.backContactRev = {"Au(40nm) (Emma)": 5.00, 
                                "Cu(150nm) (Emma)": 0.34, 
                                "Ag (Emma)": 0.71,
                                "Ag (Feng 2021)":2.59,
                                "Ag (Ren 2021)":2.59,
-                               "Cu (O'Hara 2023)":0.000041, # small number most likely an issue
+                               "Cu (O'Hara 2023)":0.000041,
                                "Gold (Kim 2023)":93.88,
-                               "PbI2":0.24} 
-        self.absorberRev    = {"PbI2 (Emma)":0.53, 
+                               "PbI₂ (Ren 2021)":0.24} 
+        self.absorberRev    = {"PbI₂ (Emma)":0.53, 
                                "PbSO (Emma)":0.01,
-                               "MAPbI3 (Feng 2021)":0.32,
-                               "PbI2 (Reng 2021)":0.24,
-                               "Pb3O4 (O'Hara)":0.01}
+                               "MAPbI₃ (Feng 2021)":0.32,
+                               "PbI₂ (Reng 2021)":0.24,
+                               "Pb₃O₄ (O'Hara)":0.01}
         self.glassRev       = {"Glass (Emma)":9.38,
                                "ITO/Glass (Feng 2021)":6.92,
                                "FTO/Glass (Reng 2021)":5.00,

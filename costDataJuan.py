@@ -6,7 +6,9 @@ from dash import dcc, html, Input, Output, callback
 
 class costData:
     def __init__(self):
-        self.coverGlassRev  = {"default":0.00}
+        self.coverGlassRev  = {"Thermal Delamination (McCalmot et al.)":0.04,
+                               "Hot Knife (McCalmot et al.)":           0.10,
+                               "Autoclaving (McCalmot et al.)":         0.44}
         self.backContactRev = {
                                "Butylamine (BA) (Feng 2021)":               0.002669,
                                "Flange-Mount Immersion Heaters (Feng 2021)":0.0000116,

@@ -11,8 +11,11 @@ bg_color         = '#23221B'
 background_color = '#8E9FA3'
 accent_color     = '#3d3c36'
 
+color_white      = '#ffffff'
+
 #bar graph styles
-font_color  = "#afa732"
+font_color  = "#afa732"   # mustard-yellow
+#font_color   = "#ffffff" # white
 font_family = "Courier New"
 
 def update_cost_graph(app):
@@ -40,7 +43,7 @@ def update_cost_graph(app):
         # Create the bar chart
         fig = go.Figure()
 
-        bar_title_font_style = dict(size=12, color="#afa732", family=font_family)
+        bar_title_font_style = dict(size=12, color=font_color, family=font_family)
 
         fig.add_trace(go.Bar(
             x=["Cover Glass"],
@@ -184,7 +187,7 @@ def update_revenue_graph(app):
         # Create the bar chart
         fig = go.Figure()
 
-        bar_title_font_style = dict(size=12, color="#afa732", family=font_family)
+        bar_title_font_style = dict(size=12, color=font_color, family=font_family)
 
         fig.add_trace(go.Bar(
             x=["Cover Glass"],

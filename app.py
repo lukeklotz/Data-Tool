@@ -25,5 +25,5 @@ update_revenue_graph(app)
 
 # Run the app
 if __name__ == "__main__":
-    #app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000))) #use for render hosting
-    app.run_server(debug=True) #use for local development
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000))) #use for render hosting
+    #app.run_server(debug=True) #use for local development

@@ -155,7 +155,7 @@ def update_cost_graph(app):
             ),
             paper_bgcolor=bg_color,
             plot_bgcolor=bg_color,  # Match plot background to paper background
-            height=500,  # Default height that will scale with autosize=True
+            height=500,
             uniformtext=dict(mode='hide', minsize=10),  # Ensures uniform text size
         )
 
@@ -298,7 +298,7 @@ def update_revenue_graph(app):
             ),
             paper_bgcolor=bg_color,
             plot_bgcolor=bg_color,  # Match plot background to paper background
-            height=500,  # Default height that will scale with autosize=True
+            height=500, 
             uniformtext=dict(mode='hide', minsize=10),  # Ensures uniform text size
         )
 

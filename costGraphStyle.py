@@ -16,14 +16,20 @@ def displayCostGraph(app, costData, revData):
     glassRev       = revData.getGlass()
 
     #drop down and background styles
-    width            = '70%'
-    dd_color         = '#353431'
-    bg_color         = '#23221B'
-    background_color = '#8E9FA3'
+    width            = '80%'
+    #dd_color         = '#353431'
+    #bg_color         = '#23221B'
+    #background_color = '#8E9FA3'
 
     #bar graph styles
-    font_color  = "#afa732"
-    font_family = "Courier New"
+    #font_color  = "#afa732"
+    #font_family = "Courier New"
+
+    backContactHtml = ["Aluminum", "Gold", "Silver", "Copper", "Carbon"]
+    htlHTML         = ["Free", "Spiro-OmETAD", "CuSCN", "NiO"]
+    absorberHTML    = ["MAPbI₃"]
+    etlHTML         = ["TiO", "SnO"]
+    coatedGlassHTML         = ["Coated Glass"]
 
     app.layout = html.Div([
         
@@ -40,8 +46,44 @@ def displayCostGraph(app, costData, revData):
         html.Div([
             html.Div([
                 html.H3("Step 1: Selection of Materials", className="materials-title"),
-                html.Img(src="/assets/graphic.png", alt="img_1", className="box-image")
+                # html.Img(src="/assets/graphic.png", alt="img_2", className="box-image")
+                
+                html.Section([
+                    html.Div([
+                        html.Div("Layer"), 
+                        html.Div("Alternative Materials")
+                    ], className="layer-info-row"),
+                    html.Div([
+                        html.Div("Cover Glass"),
+                        html.Div("Cover Glass"),
+                    ], className="layer-info-row"),
+                    html.Div([
+                        html.Div("Back Contact Layer"),
+                            html.Div([html.Div(material, className="layer-info-item") for material in backContactHtml], className="layer-info-col"),
+                    ], className="layer-info-row"),
+                     
+                    html.Div([
+                        html.Div("Hole Transport Layer"),
+                            html.Div([html.Div(material) for material in htlHTML], className="layer-info-col"),
+
+                    ], className="layer-info-row"),
+                    html.Div([
+                        html.Div("Absorber"),
+                            html.Div([html.Div(material) for material in absorberHTML], className="layer-info-col"),
+                    ], className="layer-info-row"),
+                    html.Div([
+                        html.Div("ETL"),
+                            html.Div([html.Div(material) for material in etlHTML], className="layer-info-col"),
+                    ], className="layer-info-row"),
+                    html.Div([
+                        html.Div("FTO Coated Glass"),
+                            html.Div([html.Div(material) for material in coatedGlassHTML], className="layer-info-col"),
+                    ], className="layer-info-row"),
+
+                ], className="layer-info-box-1")
             ], className="box-common box-mid"),
+
+
             html.Div([
                 html.H3("Step 2: Selection of Extraction Method", className="materials-title"),
                 html.Img(src="/assets/text.png", alt="img_2", className="box-image")
@@ -50,6 +92,7 @@ def displayCostGraph(app, costData, revData):
         ], className="top-row-container"),
 
     #cost graph styling
+    html.Section([
     html.Div([
         # Column 1: Dropdowns and titles
         html.Div([
@@ -91,7 +134,7 @@ def displayCostGraph(app, costData, revData):
             dcc.Graph(id='cost-bar-chart'),
         ], className="drop-down-menu"),
 
-    ], className="graph-and-dropdown-container"),
+    ], className="graph-and-dropdown-container bar-graph"),
 
     # Initialize app layout
     html.Div([
@@ -131,8 +174,9 @@ def displayCostGraph(app, costData, revData):
 
         html.Div([
             dcc.Graph(
-                id='cost-revenue-chart',)
+                id='cost-revenue-chart')
         ], className="drop-down-menu"),
+    ], className="graph-and-dropdown-container bar-graph")
     ], className="graph-and-dropdown-container")
 
 

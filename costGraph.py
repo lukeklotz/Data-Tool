@@ -116,7 +116,7 @@ def create_bar_chart(coverGlass, backContact, Absorber, etl, font_family, font_c
         title="Cost of Selected Methods",
         xaxis={'title': 'Category'},
         yaxis={
-            'title': 'Cost',
+            'title': '$Cost',
             'range': [0, 15],  # Adjust y-axis range for smaller prices
             'gridcolor': 'darkgray'  # Grid line color
         },

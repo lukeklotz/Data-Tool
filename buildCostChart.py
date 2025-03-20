@@ -14,8 +14,8 @@ accent_color     = '#3d3c36'
 color_white      = '#ffffff'
 
 #bar graph styles
-font_color  = "#afa732"   # mustard-yellow
-#font_color   = "#ffffff" # white
+#font_color  = "#afa732"   # mustard-yellow
+font_color   = "#ffffff" # white
 font_family = "Courier New"
 
 def update_cost_graph(app):

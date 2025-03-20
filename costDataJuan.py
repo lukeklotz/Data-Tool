@@ -10,60 +10,23 @@ class costData:
                                "Hot Knife (McCalmot et al.)":           0.10,
                                "Autoclaving (McCalmot et al.)":         0.44}
         self.backContactRev = {
-                               "Butylamine (BA) (Feng 2021)":               0.002669,
-                               "Flange-Mount Immersion Heaters (Feng 2021)":0.0000116,
-
-                               "Adhesive (Ren 2021)":                       0.49,
-
-                               "KI solution 1.5M (O'Hara 2023)":            0.000014,
-
-                               "CB (Kim 2023)":  0.00095,
-                               "DMF (Kim 2023)": 0.000892,
+                               "Back Contact (Feng 2021)" : 0.0026806,
+                               "Back Contact (Ren 2021)":   0.49,
+                               "Back Contact (O'Hara 2023)":0.000014,
+                               "Back Contact (Kim 2023)" : 0.001842,
                               } 
         self.absorberRev    = {
-                               "Butylamine (BA) (Feng 2021)":                 0.0123,
-                               "Electricity, medium voltage (Feng 2021)":     0.0073,
-                               "Ethanol, without water, in 95% (Feng 2021)":  0.00005,
-                               "Hydrochloric acid, without water (Feng 2021)":0.05279,
-                               "Tap water (Feng 2021)":                       0.00331,
-                               "Toluene (Feng 2021)":                         1.69,
-                               
-                               "Electricity, medium voltage (Ren 2021)": 0.000069,
-                               "Lead nitrate (Ren 2021)":    0.000087,
-                               "Methanol (Ren 2021)":        0.000006,
-                               "Tap water (Ren 2021)":       0.000003,
-                               "Zeolite, powder (Ren 2021)": 0.000002,
-                               "Nitrogen, Liquid (Ren 2021)":0.013350,
-                               "Ethyl acetate (Ren 2021)":   6.104,
-
-                               "Electricity, medium voltage (O'Hara)": 0.0000023,
-                               "Sulfuric Acid (O'Hara)":               0.000829,
-                               "KI solution 1.5M (O'Hara)":            0.000895,
-
-                               "Thermal delamination (hot plate) (Bo Chen 2021)":     0.00000605,
-                               "Hot Blade (assumed 30 sec) (Bo Chen 2021)":           0.00000363,
-                               "DMF (Bo Chen 2021)":                                  4.425,
-                               "Acidic cation-exchange resin (Bo Chen 2021)":         0.0172,  
-                               "Nitric acid (Bo Chen 2021)":                          0.0009625,
-                               "Sodium iodide (Nal) (Bo Chen 2021)":                  1.09836,
+                               "Absorber (Feng 2021)" :    1.76, 
+                               "Absorber (Ren 2021)" :     6.117517,
+                               "Absorber (O' Hara)" :      0.0017,
+                               "Absorber (Bo Chen 2021)" : 5.54153218,
                                }
         self.glassRev       = {
-                               "Butylamine (BA) (Feng 2021)":               6.13,
-                               "Ethanol, without water, in 95% (Feng 2021)":0.024,
-                               "Electricity, medium voltage (Feng 2021)":   0.026,
-
-                               "Nitrogen, Liquid (Ren 2021)":            0.01394,
-                               "Tap water (Ren 2021)":                   0.0003,
-                               "Zeolite, powder (Ren 2021)":             0.00397,
-                               "Electricity, medium voltage (Ren 2021)": 0.3595,
-
-                               "KI Solution 1.5M (O'Hara)":              2.38,
-
-                               "CB (Kim 2023)":  4.709,
-                               "DMF (Kim 2023)": 4.422,
-
-                               "CB (Bo Chen 2021)": 0.004,
-                               "Thermal delamination (drying) (Bo Chen 2021)": 0.03025,
+                               "Glass (Feng 2021)" : 6.18,
+                               "Glass (Ren 2021)" : 0.38,
+                               "Glass (O'Hara)":    2.38,
+                               "Glass (Kim 2023)" : 9.131,
+                               "Glass (Bo Chen 2021)" : 0.03,
                               }
 
     def getCoverGlass(self):

@@ -16,7 +16,7 @@ def displayCostGraph(app, costData, revData):
     glassRev       = revData.getGlass()
 
     #drop down and background styles
-    width            = '80%'
+    width            = '90%'
     #dd_color         = '#353431'
     #bg_color         = '#23221B'
     #background_color = '#8E9FA3'
@@ -25,11 +25,26 @@ def displayCostGraph(app, costData, revData):
     #font_color  = "#afa732"
     #font_family = "Courier New"
 
+
+    # -  step 1 methods - #
     backContactHtml = ["Aluminum", "Gold", "Silver", "Copper", "Carbon"]
     htlHTML         = ["Free", "Spiro-OmETAD", "CuSCN", "NiO"]
     absorberHTML    = ["MAPbI₃"]
-    etlHTML         = ["TiO", "SnO"]
+    etlHTML         = ["TiO₂", "SnO₂"]
     coatedGlassHTML         = ["Coated Glass"]
+
+
+    # - step 2 methods - #
+
+    step2CoverGlassHTML  = ["Thermal Decomposition", "Hot Knife", "Autoclaving"]
+    step2BackContactHTML = ["Physical", "Checmical"]
+    step2AbsorberHTML    = ["Chemical", "H₂O", "Ion Exchange", "Precipitate"]
+    step2CoatedGlass    = ["Cleaning"]
+
+    CoverGlassLit   = [" ", "Heiho et al. (2023)", "Duane et al. (2020)"]
+    backContactLit  = ["Binek et al. (2016)", "Chowdhurry et al (2021)"]
+    absorberLit     = ["Binek et al. (2016)", "Schmidt et al. (2023)", "Ren et al. (2021)", "Zang et al. (2018)"]
+    CoatedGlassLit  = ["Huang et al. (2017)"]
 
     app.layout = html.Div([
         
@@ -86,7 +101,37 @@ def displayCostGraph(app, costData, revData):
 
             html.Div([
                 html.H3("Step 2: Selection of Extraction Method", className="materials-title"),
-                html.Img(src="/assets/text.png", alt="img_2", className="box-image")
+                #html.Img(src="/assets/text.png", alt="img_2", className="box-image")
+                html.Section([
+                    html.Div([
+                        html.Div("Layer"), 
+                        html.Div("Method"),
+                        html.Div("Literature")
+                    ], className="layer-info-row"), 
+                    html.Div([
+                        html.Div("Cover Glass"),
+                            html.Div([html.Div(material, className="layer-info-item") for material in step2CoverGlassHTML], className="layer-info-col"),
+                            html.Div([html.Div(literature, className = "layer-info-item") for literature in CoverGlassLit], className="layer-info-col")
+                    ], className="layer-info-row"),
+                     
+                    html.Div([
+                        html.Div("Back Contact"),
+                            html.Div([html.Div(material) for material in step2BackContactHTML], className="layer-info-col"),
+                            html.Div([html.Div(literature) for literature in backContactLit], className="layer-info-col"),
+
+                    ], className="layer-info-row"),
+                    html.Div([
+                        html.Div("Absorber"),
+                            html.Div([html.Div(material) for material in step2AbsorberHTML], className="layer-info-col"),
+                            html.Div([html.Div(literature) for literature in absorberLit], className="layer-info-col")
+                    ], className="layer-info-row"),
+                    html.Div([
+                        html.Div("ETL / Coated Glass"),
+                            html.Div([html.Div(material) for material in step2CoatedGlass], className="layer-info-col"),
+                            html.Div([html.Div(literature) for literature in CoatedGlassLit], className="layer-info-col")
+                    ], className="layer-info-row"),
+
+                ], className="layer-info-box-1")
             ], className="box-common box-mid"),
             ], className="materials-container"),
         ], className="top-row-container"),

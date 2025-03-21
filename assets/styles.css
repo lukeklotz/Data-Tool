@@ -2,8 +2,8 @@
 /* ===== ROOT VARIABLES ===== */
 :root {
   /* Color palette */
-  --primary-bg: #23221B;
-  --secondary-bg: #353431;
+  --primary-bg: #0c0909;
+  --secondary-bg: #1e1d1d;
   --accent-color: #afa732;
   --text-light: #ffffff;
   --text-dark: #333333;
@@ -11,15 +11,15 @@
   
   /* Typography */
   --font-main: 'Courier New', Courier, monospace;
-  
+ 
   /* Spacing */
   --spacing-sm: 10px;
   --spacing-md: 20px;
   --spacing-lg: 30px;
   
   /* Border radius */
-  --radius-sm: 10px;
-  --radius-md: 15px;
+  --radius-sm: 1px;
+  --radius-md: 5px;
   
   /* Gaps */
   --gap-dist-xsm: 2rem;
@@ -42,9 +42,6 @@ h1 {
   font-family: var(--font-main);
 }
 
-
-/* ====== DEBUGGING ======= */
-
 /* ===== LAYOUT CONTAINERS ===== */
 .background {
   display: flex;
@@ -62,8 +59,10 @@ h1 {
   justify-content: center;
   flex-direction: row;
   align-items: center;
-  max-width: 100%;
+  min-width: 100%;
   padding: 1vh;
+  padding-bottom: 0px;
+  margin: 0px;
 }
 
 .materials-container {
@@ -77,16 +76,19 @@ h1 {
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  width: 95%;
+  width: 99.65%;
   border-radius: var(--radius-md);
   padding: 25px;
   margin-bottom: 2rem;
+  margin-top: 0px;
   gap: var(--gap-dist-xsm)
 }
 
 .bar-graph {
     border: solid var(--border-color) 2px;
     background-color: var(--secondary-bg);
+    gap: 0px;
+    margin: 0px;
 }
 
 /* ===== BOXES ===== */
@@ -193,16 +195,17 @@ h1 {
 
 /* ===== MEDIA QUERIES ===== */
 
-@media screen and (max-width: 2000px) {
+@media screen and (max-width: 2250px) {
   .top-row-container {
     flex-direction: column;
   }
   .graph-and-dropdown-container {
-    width: 90%;
+    width: 94.1%;
     flex-direction: column;
   }
   .bar-graph{
     flex-direction: row;
+    padding-right: var(--gap-dist-md);
   }
   
 }

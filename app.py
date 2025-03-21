@@ -6,7 +6,7 @@
 
 import os
 from revenueData import *
-from buildCostChart import *
+from buildCharts import *
 #from utils import *
 
 app = dash.Dash(__name__)

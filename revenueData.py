@@ -6,7 +6,7 @@
 #key           = materal NAME
 #value         = revenue AMOUNT
 
-from costDataJuan import *
+from costData import *
 
 class revenueData:
     def __init__(self):
@@ -17,7 +17,7 @@ class revenueData:
                                "Ag (McCalmot et al.)": 0.71,
                                "Ag (Feng 2021)":2.59,
                                "Ag (Ren 2021)":2.59,
-                               "Cu (O'Hara 2023)":0.000041,
+                               "Cu (O'Hara 2023)":0.01,
                                "Gold (Kim 2023)":93.88,
                                "PbI₂ (Ren 2021)":0.24} 
 
@@ -29,10 +29,11 @@ class revenueData:
 
         self.glassRev       = {"Glass (McCalmot et al.)":9.38,
                                "ITO/Glass (Feng 2021)":6.92,
-                               "FTO/Glass (Reng 2021)":5.00,
                                "ITO/Glass (O'Hara 2023)":6.92,
                                "ITO/Glass (Kim 2023)":6.92,
-                               "ITO/Glass (Bo Chen 2021)":6.92}
+                               "ITO/Glass (Bo Chen 2021)":6.92,
+                               "FTO/Glass (Reng 2021)":5.00,
+                               }
 
     def getCoverGlass(self):
         return self.coverGlassRev

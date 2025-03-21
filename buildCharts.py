@@ -1,5 +1,5 @@
 import plotly.graph_objects as go
-from costGraphStyle import * 
+from graphView import * 
 from revenueData import *
 from utils import *
 
@@ -7,7 +7,7 @@ from utils import *
 #drop down and background styles
 width            = '70%'
 dd_color         = '#353431'
-bg_color         = '#23221B'
+bg_color         = '#080807'
 background_color = '#8E9FA3'
 accent_color     = '#3d3c36'
 

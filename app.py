@@ -4,7 +4,7 @@
 #import dash
 #from dash import dcc, html, Input, Output, callback
 
-import os
+import os # used for render hosting
 from revenueData import *
 from buildCharts import *
 #from utils import *

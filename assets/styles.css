@@ -201,7 +201,7 @@ h1 {
     flex-direction: column;
   }
   .graph-and-dropdown-container {
-    width: 94.1%;
+    width: 92.3%;
     flex-direction: column;
   }
   .bar-graph{
@@ -209,9 +209,9 @@ h1 {
     padding-right: var(--gap-dist-md);
   }
   .box-top {
-    min-width: 90%;
+    min-width: 95%;
     min-height: 50%;
-    margin: 0;
+    margin: 8px;
     border: solid black 2px;
     flex-direction: start;
     text-align: left;
@@ -220,7 +220,7 @@ h1 {
 
 @media screen and (max-width: 1400px) {
   .box-top {
-    min-width: 100%;
+    min-width: 93.5%;
   }
 
   .top-row-container {

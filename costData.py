@@ -14,7 +14,7 @@ class costData:
         self.backContactRev = {
                                "Back Contact (Feng 2021)" : 0.003, #0.0026806
                                "Back Contact (Ren 2021)":   0.49,
-                               "Back Contact (O'Hara 2023)":0.00001,  #0.000014
+                               "Back Contact (O'Hara 2023)":0.01,  #0.000014
                                "Back Contact (Kim 2023)" :  0.002,  #0.001842
                               } 
         self.absorberRev    = {

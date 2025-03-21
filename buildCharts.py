@@ -7,15 +7,21 @@ from utils import *
 #drop down and background styles
 width            = '70%'
 dd_color         = '#353431'
-bg_color         = '#080807'
+bg_color         = '#17171a'
 background_color = '#8E9FA3'
 accent_color     = '#3d3c36'
 
 color_white      = '#ffffff'
 
+barColor1 = '#82A66F'
+barColor2 = '#6F8EA6'
+barColor3 = '#BBB775'
+barColor4 = '#A66F6F'
+barColor5 = '#6FA697' 
+
 #bar graph styles
-font_color  = "#afa732"   # mustard-yellow
-#font_color   = "#ffffff" # white
+#font_color  = "#afa732"   # mustard-yellow
+font_color   = "#ffffff" # white
 font_family = "Courier New"
 
 def update_cost_graph(app):
@@ -49,7 +55,7 @@ def update_cost_graph(app):
             x=["Cover Glass"],
             y=[coverGlassCost],
             name="Cover Glass",
-            marker=dict(color='red', line=dict(width=2, color="black")),
+            marker=dict(color=barColor1, line=dict(width=2, color="black")),
             text=[f"${coverGlassCost}"],
             textposition="outside", 
             textfont=bar_title_font_style
@@ -59,7 +65,7 @@ def update_cost_graph(app):
             x=["Back Contact"],
             y=[backContactCost],
             name="Back Contact",
-            marker=dict(color='blue', line=dict(width=2, color="black")),
+            marker=dict(color=barColor2, line=dict(width=2, color="black")),
             text=[f"${backContactCost}"],
             textposition="outside",  
             textfont=bar_title_font_style
@@ -69,7 +75,7 @@ def update_cost_graph(app):
             x=["Absorber"],
             y=[absorberCost],
             name="Absorber",
-            marker=dict(color='lightblue', line=dict(width=2, color="black")),
+            marker=dict(color=barColor3, line=dict(width=2, color="black")),
             text=[f"${absorberCost}"],
             textposition="outside", 
             textfont=bar_title_font_style
@@ -79,7 +85,7 @@ def update_cost_graph(app):
             x=["ETL"],
             y=[glassCost],
             name="ETL",
-            marker=dict(color='yellow', line=dict(width=2, color="black")),
+            marker=dict(color=barColor4, line=dict(width=2, color="black")),
             text=[f"${glassCost}"],
             textposition="outside",  
             textfont=bar_title_font_style
@@ -89,7 +95,7 @@ def update_cost_graph(app):
             x=["Total"],
             y=[formatted_total_cost],
             name="Total Cost",
-            marker=dict(color='darkgreen', line=dict(width=2, color="black")),
+            marker=dict(color=barColor5, line=dict(width=2, color="black")),
             text=[f"${formatted_total_cost}"],
             textposition="outside",
             textfont=bar_title_font_style
@@ -193,7 +199,7 @@ def update_revenue_graph(app):
             x=["Cover Glass"],
             y=[coverGlassCost],
             name="Cover Glass",
-            marker=dict(color='red', line=dict(width=2, color="black")),
+            marker=dict(color=barColor1, line=dict(width=2, color="black")),
             text=[f"${coverGlassCost:.2f}"],
             textposition="outside", 
             textfont=bar_title_font_style
@@ -203,7 +209,7 @@ def update_revenue_graph(app):
             x=["Back Contact"],
             y=[backContactCost],
             name="Back Contact",
-            marker=dict(color='blue', line=dict(width=2, color="black")),
+            marker=dict(color=barColor2, line=dict(width=2, color="black")),
             text=[f"${backContactCost:.2f}"],
             textposition="outside",  
             textfont=bar_title_font_style
@@ -213,7 +219,7 @@ def update_revenue_graph(app):
             x=["Absorber"],
             y=[absorberCost],
             name="Absorber",
-            marker=dict(color='lightblue', line=dict(width=2, color="black")),
+            marker=dict(color=barColor3, line=dict(width=2, color="black")),
             text=[f"${absorberCost:.2f}"],
             textposition="outside", 
             textfont=bar_title_font_style
@@ -223,7 +229,7 @@ def update_revenue_graph(app):
             x=["Glass"],
             y=[glassCost],
             name="Glass",
-            marker=dict(color='yellow', line=dict(width=2, color="black")),
+            marker=dict(color=barColor4, line=dict(width=2, color="black")),
             text=[f"${glassCost:.2f}"],
             textposition="outside",  
             textfont=bar_title_font_style
@@ -233,7 +239,7 @@ def update_revenue_graph(app):
             x=["Total"],
             y=[formatted_total_cost],
             name="Total Cost",
-            marker=dict(color='darkgreen', line=dict(width=2, color="black")),
+            marker=dict(color=barColor5, line=dict(width=2, color="black")),
             text=[f"${formatted_total_cost:.2f}"],
             textposition="outside",
             textfont=bar_title_font_style

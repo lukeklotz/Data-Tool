@@ -37,14 +37,45 @@ def displayCostGraph(app, costData, revData):
     # - step 2 methods - #
 
     step2CoverGlassHTML  = ["Thermal Decomposition", "Hot Knife", "Autoclaving"]
-    step2BackContactHTML = ["Physical", "Checmical"]
-    step2AbsorberHTML    = ["Chemical", "H₂O", "Ion Exchange", "Precipitate"]
-    step2CoatedGlass    = ["Cleaning"]
+    step2BackContactHTML = ["Chemical", "Physical", "Physical", "Chemical", "Physical / Chemical", "Physical / Chemical"]
+    step2AbsorberHTML    = ["Chemical (Hydrogen Iodide)",
+                            "Chemical (DMF)",
+                            "Ion Exchange",
+                            "Potassium Iodide",
+                            "Chemical (DMF)",
+                            "Chemical (Aqueous dissolution)",
+                            "Chemical (Chlorobenzene)"]
+    step2CoatedGlass    = ["Chemical (Butylamine)",
+                           "Chemical (DMF)",
+                           "Chemical (Ethyl Acetate)",
+                           "Chemical (Potassium Iodide)",
+                           "Chemical (DMF)",
+                           "Chemical (Chlorobenzene)",
+                           "Chemical (NaOAc, Nal, H₃PO₂ in water)",
+                           "Chemical (Chlorobenzene)"]
 
-    CoverGlassLit   = [" ", "Heiho et al. (2023)", "Duane et al. (2020)"]
-    backContactLit  = ["Binek et al. (2016)", "Chowdhurry et al (2021)"]
-    absorberLit     = ["Binek et al. (2016)", "Schmidt et al. (2023)", "Ren et al. (2021)", "Zang et al. (2018)"]
-    CoatedGlassLit  = ["Huang et al. (2017)"]
+    CoverGlassLit   = []
+    backContactLit  = ["Feng et al. 2021",
+                       "Ren et al. 2021",
+                       "Kim et al. 2023",
+                       "O Hara et al. 2023",
+                       "Xiao et al. 2025",
+                       "Wu et al. 2024"]
+    absorberLit     = ["Feng et al. 2021",
+                       "Deng et al. 2022",
+                       "Ren et al. 2021",
+                       "O'Hara et al. 2023",
+                       "Bo Chen et al. 2021",
+                       "Xiao et al. 2025",
+                       "Wu et al. 2024"]
+    CoatedGlassLit  = ["Feng et al. 2021",
+                       "Deng et al. 2022",
+                       "Ren et al. 2021",
+                       "O'hara et al. 2023",
+                       "Kim et al. 2023",
+                       "Bo Chen et al. 2022",
+                       "Xiao et al. 2025",
+                       "Wu et al. 2024"]
 
     app.layout = html.Div([
         

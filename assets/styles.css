@@ -110,7 +110,8 @@ h1 {
 
 .box-top {
   align-items: center;
-  width:50%
+  max-width:27%;
+  margin-right: 75px;
 }
 
 .box-mid {
@@ -207,7 +208,14 @@ h1 {
     flex-direction: row;
     padding-right: var(--gap-dist-md);
   }
-  
+  .box-top {
+    min-width: 90%;
+    min-height: 50%;
+    margin: 0;
+    border: solid black 2px;
+    flex-direction: start;
+    text-align: left;
+  }
 }
 
 @media screen and (max-width: 1400px) {
@@ -227,7 +235,12 @@ h1 {
 
   .bar-graph {
     flex-direction: row;
-}
+  }
+
+  .materials-container{
+    min-width: 100%;
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -239,4 +252,5 @@ h1 {
   .box-common {
     min-height: 300px;
   }
+
 }

@@ -173,10 +173,10 @@ def update_revenue_graph(app):
     @app.callback(
         Output('cost-revenue-chart', 'figure'),
         [
-            Input('c-dropdown', 'value'),
-            Input('b-dropdown', 'value'),
-            Input('A-dropdown', 'value'),
-            Input('e-dropdown', 'value')  
+            Input('cg-revenue-dropdown', 'value'),
+            Input('bc-revenue-dropdown', 'value'),
+            Input('ab-revenue-dropdown', 'value'),
+            Input('etl-revenue-dropdown', 'value')  
         ]
     )
     def update_graph(coverGlass_method, backContact_method, absorber_method, glass_method):

@@ -170,48 +170,7 @@ def displayCostGraph(app, costData, revData):
     #graph styling
     html.Section([
 
-    # Revenue Graph
-    html.Div([
-        html.Div([
-            html.H4("Cover Glass", className='dropdown'),
-            dcc.Dropdown(
-                id='c-dropdown',
-                options=[{'label': k, 'value': k} for k in coverGlassRev.keys()],
-                value=list(coverGlassRev.keys())[0],  # Default value
-                style={'width': width}
-            ),
-
-            html.H4("Back Contact", className='dropdown'),
-            dcc.Dropdown(
-                id='b-dropdown',
-                options=[{'label': k, 'value': k} for k in backContactRev.keys()],
-                value=list(backContactRev.keys())[0],
-                style={'width': width}
-            ),
-
-            html.H4("Absorber", className='dropdown'),
-            dcc.Dropdown(
-                id='A-dropdown',
-                options=[{'label': k, 'value': k} for k in absorberRev.keys()],
-                value=list(absorberRev.keys())[0],
-                style={'width': width}
-            ),
-
-            html.H4("Glass", className='dropdown'),
-            dcc.Dropdown(
-                id='e-dropdown',
-                options=[{'label': k, 'value': k} for k in glassRev.keys()],
-                value=list(glassRev.keys())[0],
-                style={'width': width}
-            ),
-        ], className="dd-width-padding"), 
-
-        html.Div([
-            dcc.Graph(
-                id='cost-revenue-chart')
-        ], className="drop-down-menu"),
-    ], className="graph-and-dropdown-container bar-graph"),
-
+    #cost Graph
     html.Div([
         # Column 1: Dropdowns and titles
         html.Div([
@@ -253,6 +212,48 @@ def displayCostGraph(app, costData, revData):
             dcc.Graph(id='cost-bar-chart'),
         ], className="drop-down-menu"),
 
+    ], className="graph-and-dropdown-container bar-graph"),
+
+    # Revenue Graph
+    html.Div([
+        html.Div([
+            html.H4("Cover Glass", className='dropdown'),
+            dcc.Dropdown(
+                id='cg-revenue-dropdown',
+                options=[{'label': k, 'value': k} for k in coverGlassRev.keys()],
+                value=list(coverGlassRev.keys())[0],  # Default value
+                style={'width': width}
+            ),
+
+            html.H4("Back Contact", className='dropdown'),
+            dcc.Dropdown(
+                id='bc-revenue-dropdown',
+                options=[{'label': k, 'value': k} for k in backContactRev.keys()],
+                value=list(backContactRev.keys())[0],
+                style={'width': width}
+            ),
+
+            html.H4("Absorber", className='dropdown'),
+            dcc.Dropdown(
+                id='ab-revenue-dropdown',
+                options=[{'label': k, 'value': k} for k in absorberRev.keys()],
+                value=list(absorberRev.keys())[0],
+                style={'width': width}
+            ),
+
+            html.H4("Glass", className='dropdown'),
+            dcc.Dropdown(
+                id='etl-revenue-dropdown',
+                options=[{'label': k, 'value': k} for k in glassRev.keys()],
+                value=list(glassRev.keys())[0],
+                style={'width': width}
+            ),
+        ], className="dd-width-padding"), 
+
+        html.Div([
+            dcc.Graph(
+                id='cost-revenue-chart')
+        ], className="drop-down-menu"),
     ], className="graph-and-dropdown-container bar-graph"),
 
     ], className="graph-and-dropdown-container")

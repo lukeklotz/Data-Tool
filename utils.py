@@ -5,10 +5,10 @@
 #from costGraphStyle import * 
 #from revenueData import *
 
-def formatTotalCost(coverGlass_cost, backContact_cost, absorber_cost, etl_cost):
+def formatTotalCost(backContact_cost, absorber_cost, etl_cost):
 
     # Calculate the total cost
-    total_cost = coverGlass_cost + backContact_cost + absorber_cost + etl_cost
+    total_cost = backContact_cost + absorber_cost + etl_cost
     formatted_total_cost = round(total_cost, 2)
 
     return formatted_total_cost

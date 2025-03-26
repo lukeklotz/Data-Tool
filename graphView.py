@@ -3,18 +3,16 @@ from costData import *
 def displayCostGraph(app, costData, revData):
 
     # group cost data
-    coverGlassCost  = costData.getCoverGlass()
     backContactCost = costData.getBackContact() 
     absorberCost    = costData.getAbsorber() 
     glassCost       = costData.getGlass()       
 
     # group revenue data
-
-    coverGlassRev  = revData.getCoverGlass()
+    '''
     backContactRev = revData.getBackContact()
     absorberRev    = revData.getAbsorber()
     glassRev       = revData.getGlass()
-
+    '''
     #drop down and background styles
     width            = '90%'
     #dd_color         = '#353431'
@@ -36,7 +34,6 @@ def displayCostGraph(app, costData, revData):
 
     # - step 2 methods - #
 
-    step2CoverGlassHTML  = ["Thermal Decomposition", "Hot Knife", "Autoclaving"]
     step2BackContactHTML = ["Chemical", "Physical", "Physical", "Chemical", "Physical / Chemical", "Physical / Chemical"]
     step2AbsorberHTML    = ["Chemical (Hydrogen Iodide)",
                             "Chemical (DMF)",
@@ -54,7 +51,6 @@ def displayCostGraph(app, costData, revData):
                            "Chemical (NaOAc, Nal, H₃PO₂ in water)",
                            "Chemical (Chlorobenzene)"]
 
-    CoverGlassLit   = []
     backContactLit  = ["Feng et al. 2021",
                        "Ren et al. 2021",
                        "Kim et al. 2023",
@@ -99,10 +95,7 @@ def displayCostGraph(app, costData, revData):
                         html.Div("Layer"), 
                         html.Div("Alternative Materials")
                     ], className="layer-info-row"),
-                    html.Div([
-                        html.Div("Cover Glass"),
-                        html.Div("Cover Glass"),
-                    ], className="layer-info-row"),
+
                     html.Div([
                         html.Div("Back Contact Layer"),
                             html.Div([html.Div(material, className="layer-info-item") for material in backContactHtml], className="layer-info-col"),
@@ -139,11 +132,6 @@ def displayCostGraph(app, costData, revData):
                         html.Div("Method"),
                         html.Div("Literature")
                     ], className="layer-info-row"), 
-                    html.Div([
-                        html.Div("Cover Glass"),
-                            html.Div([html.Div(material, className="layer-info-item") for material in step2CoverGlassHTML], className="layer-info-col"),
-                            html.Div([html.Div(literature, className = "layer-info-item") for literature in CoverGlassLit], className="layer-info-col")
-                    ], className="layer-info-row"),
                      
                     html.Div([
                         html.Div("Back Contact"),
@@ -174,13 +162,6 @@ def displayCostGraph(app, costData, revData):
     html.Div([
         # Column 1: Dropdowns and titles
         html.Div([
-            html.H4("Cover Glass", className='dropdown'),
-            dcc.Dropdown(
-                id='coverGlass-dropdown',
-                options=[{'label': k, 'value': k} for k in coverGlassCost.keys()],
-                value=list(coverGlassCost.keys())[0],  # gets first value (default)
-                style={'width': width}
-            ),
             
             html.H4("Back Contact", className='dropdown'),
             dcc.Dropdown(
@@ -219,38 +200,7 @@ def displayCostGraph(app, costData, revData):
         
         html.Div([
 
-
-            html.H4("Cover Glass", className='dropdown'),
-            dcc.Dropdown(
-                id='cg-revenue-dropdown',
-                options=[{'label': k, 'value': k} for k in coverGlassRev.keys()],
-                value=list(coverGlassRev.keys())[0],  # Default value
-                style={'width': width}
-            ),
-           
-            html.H4("Back Contact", className='dropdown'),
-            dcc.Dropdown(
-                id='bc-revenue-dropdown',
-                options=[{'label': k, 'value': k} for k in backContactRev.keys()],
-                value=list(backContactRev.keys())[0],
-                style={'width': width}
-            ),
-
-            html.H4("Absorber", className='dropdown'),
-            dcc.Dropdown(
-                id='ab-revenue-dropdown',
-                options=[{'label': k, 'value': k} for k in absorberRev.keys()],
-                value=list(absorberRev.keys())[0],
-                style={'width': width}
-            ),
             
-            html.H4("Glass", className='dropdown'),
-            dcc.Dropdown(
-                id='etl-revenue-dropdown',
-                options=[{'label': k, 'value': k} for k in glassRev.keys()],
-                value=list(glassRev.keys())[0],
-                style={'width': width}
-            ),
         ], className="dd-width-padding"), 
        
        html.Div([

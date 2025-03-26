@@ -30,36 +30,24 @@ def update_cost_graph(app):
     @app.callback(
         Output('cost-bar-chart', 'figure'),
         [
-            Input('coverGlass-dropdown', 'value'),
             Input('backContact-dropdown', 'value'),
             Input('Absorber-dropdown', 'value'),
             Input('etl-dropdown', 'value')
         ]
     )
 
-    def update_graph(coverGlass_method, backContact_method, absorber_method, glass_method):
+    def update_graph(backContact_method, absorber_method, glass_method):
 
-        coverGlassCost = cost.getCoverGlassCost(coverGlass_method)
         backContactCost = cost.getBackContactCost(backContact_method)
         absorberCost = cost.getAbsorberCost(absorber_method)
         glassCost = cost.getGlassCost(glass_method)
 
-        formatted_total_cost = formatTotalCost(coverGlassCost, backContactCost, absorberCost, glassCost)
+        formatted_total_cost = formatTotalCost(backContactCost, absorberCost, glassCost)
         
         # Create the bar chart
         fig = go.Figure()
 
         bar_title_font_style = dict(size=12, color=font_color, family=font_family)
-
-        fig.add_trace(go.Bar(
-            x=["Cover Glass"],
-            y=[coverGlassCost],
-            name="Cover Glass",
-            marker=dict(color=barColor1, line=dict(width=2, color="black")),
-            text=[f"${coverGlassCost}"],
-            textposition="outside", 
-            textfont=bar_title_font_style
-        ))
 
         fig.add_trace(go.Bar(
             x=["Back Contact"],
@@ -174,18 +162,14 @@ def update_revenue_graph(app):
     @app.callback(
         Output('cost-revenue-chart', 'figure'),
         [
-            Input('cg-revenue-dropdown', 'value'),
-
             Input('backContact-dropdown', 'value'),  #input is from cost graph
             Input('Absorber-dropdown', 'value'),
-            
-            Input('etl-revenue-dropdown', 'value')  
+            Input('etl-dropdown', 'value')  
         ]
     )
-    def update_graph(coverGlass_method, backContact_method, absorber_method, glass_method):
+    def update_graph(backContact_method, absorber_method, glass_method):
 
         
-        coverGlassCost = revData.getCoverGlassRev(coverGlass_method)
 
         backContactCost = revData.getBackContactRev(backContact_method)
         absorberCost = revData.getAbsorberRev(absorber_method)
@@ -193,25 +177,16 @@ def update_revenue_graph(app):
         glassCost = revData.getGlassRev(glass_method)
 
         # Calculate total cost
-        formatted_total_cost = coverGlassCost + backContactCost + absorberCost + glassCost
+        formatted_total_cost = backContactCost + absorberCost + glassCost
 
         # Create the bar chart
         fig = go.Figure()
 
         bar_title_font_style = dict(size=12, color=font_color, family=font_family)
 
-        fig.add_trace(go.Bar(
-            x=["Cover Glass"],
-            y=[coverGlassCost],
-            name="Cover Glass",
-            marker=dict(color=barColor1, line=dict(width=2, color="black")),
-            text=[f"${coverGlassCost:.2f}"],
-            textposition="outside", 
-            textfont=bar_title_font_style
-        ))
 
         fig.add_trace(go.Bar(
-            x=["Back Contact"],
+            x=[revData.getBackContactType(backContact_method)],
             y=[backContactCost],
             name="Back Contact",
             marker=dict(color=barColor2, line=dict(width=2, color="black")),
@@ -221,7 +196,7 @@ def update_revenue_graph(app):
         ))
 
         fig.add_trace(go.Bar(
-            x=["Absorber"],
+            x=[revData.getAbsorberType(absorber_method)],
             y=[absorberCost],
             name="Absorber",
             marker=dict(color=barColor3, line=dict(width=2, color="black")),
@@ -231,7 +206,7 @@ def update_revenue_graph(app):
         ))
 
         fig.add_trace(go.Bar(
-            x=["Glass"],
+            x=[revData.getGlassType(glass_method)],
             y=[glassCost],
             name="Glass",
             marker=dict(color=barColor4, line=dict(width=2, color="black")),

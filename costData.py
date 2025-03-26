@@ -6,32 +6,27 @@ from dash import dcc, html, Input, Output, callback
 
 class costData:
     def __init__(self):
-        self.coverGlass  = {
-                               "Thermal Delamination (McCalmot et al.)":0.04,
-                               "Hot Knife (McCalmot et al.)":           0.10,
-                               "Autoclaving (McCalmot et al.)":         0.44
-                               }
         self.backContact = {
                                "Feng 2021" : 0.003, #0.0026806
                                "Ren 2021":   0.49,
                                "O'Hara 2023":0.01,  #0.000014
                                "Kim 2023" :  0.002,  #0.001842
-                              } 
+                            } 
         self.absorber    = {
                                "Feng 2021" :    1.76, 
                                "Ren 2021" :     6.12,      #6.117517
                                "O'Hara 2023" :      0.002,     #0.0017
-                               }
+                               "Bo Chen 2021":      5.54,
+                               "Xiao et al 2025" :  3.20,
+                               "Wu et al 2024"   :  0.02,
+                            }
         self.glass       = {
-                               "Glass (Feng 2021)" : 6.18,
-                               "Glass (Ren 2021)" : 0.38,
-                               "Glass (O'Hara)":    2.38,
-                               "Glass (Kim 2023)" : 9.131,
-                               "Glass (Bo Chen 2021)" : 0.03,
+                               "Feng 2021" : 6.18,
+                               "Ren 2021" : 0.38,
+                               "O'Hara 2023":    2.38,
+                               "Kim 2023" : 9.131,
+                               "Bo Chen 2021" : 0.03,
                               }
-
-    def getCoverGlass(self):
-        return self.coverGlass
 
     def getBackContact(self):
         return self.backContact
@@ -41,14 +36,18 @@ class costData:
 
     def getGlass(self):
         return self.glass
-    
-    def getCoverGlassCost(self, method):
 
-        return self.coverGlass.get(method, 0)
 
     def getBackContactCost(self, method):
-        
         return self.backContact.get(method, 0)
+    
+    def getBackContactType(self, method):
+
+        for i in range(len(self.backContact)):
+            if self.backContact[i][0] == method:
+                return self.backContact[i][1]
+
+        return self.backContact[0][1]
 
     def getAbsorberCost(self, method):
         return self.absorber.get(method, 0)

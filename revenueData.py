@@ -10,30 +10,30 @@ from costData import *
 
 class revenueData:
     def __init__(self):
-        self.coverGlassRev  = {"2-2.5mm Glass (McCalmot et al.)":3.75}
 
-        self.backContactRev = {
-                               "Feng 2021":2.59,
-                               "Ren 2021":2.59,
-                               "O'Hara 2023":0.01,
-                               "Kim 2023":93.88,
-                               } 
 
-        self.absorberRev    = {
-                               "Feng 2021":0.32,
-                               "Reng 2021":0.24,
-                               "O'Hara":0.01}
+        self.backContactRev = [
+                            ["Feng 2021", "Ag", 2.59],
+                            ["Ren 2021", "Ag", 2.59],
+                            ["O'Hara 2023", "Cu", 0.01],
+                            ["Kim 2023", "Gold", 93.88]
+                            ]
+        self.absorberRev    = [
+                               ["Feng 2021", "MAPbI₃", 0.32],
+                               ["Ren 2021", "PbI₂", 0.24],
+                               ["O'Hara 2023", "Pb₃O₄", 0.01],
+                               ["Bo Chen 2021", "PbI₂", 0.242],
+                               ["Xiao et al 2025", "PbI₂", 6.92],
+                               ["Wu et al 2024", "MAPbI3", 0.319]
+                              ]
 
-        self.glassRev       = {
-                               "ITO/Glass (Feng 2021)":6.92,
-                               "ITO/Glass (O'Hara 2023)":6.92,
-                               "ITO/Glass (Kim 2023)":6.92,
-                               "ITO/Glass (Bo Chen 2021)":6.92,
-                               "FTO/Glass (Reng 2021)":5.00,
-                               }
-
-    def getCoverGlass(self):
-        return self.coverGlassRev
+        self.glassRev       = [
+                               ["Feng 2021", "ITO/Glass (Feng)", 6.92],
+                               ["O'Hara 2023", "ITO/Glass (O'Hara)", 6.92],
+                               ["Kim 2023", "ITO/Glass (Kim)", 6.92],
+                               ["Bo Chen 2021", "ITO/Glass (Bo Chen)", 6.92],
+                               ["Ren 2021", "FTO/Glass", 5.00],
+                              ]
 
     def getBackContact(self):
         return self.backContactRev
@@ -44,23 +44,46 @@ class revenueData:
     def getGlass(self):
         return self.glassRev
 
-    def getCoverGlassRev(self, method):
-        return self.coverGlassRev.get(method, 0)
-
     def getBackContactRev(self, method):
-        
-        if method in self.backContactRev.keys():
-            return self.backContactRev.get(method, 0)
+        for i in range(len(self.backContactRev)):
+            if self.backContactRev[i][0] == method:
+                return self.backContactRev[i][2]
 
-        return self.backContactRev.get(method, 0)
+        return self.backContactRev[0][2]
 
-    def getAbsorberRev(self, method):
+    def getBackContactType(self, method):
+        for i in range(len(self.backContactRev)):
+            if self.backContactRev[i][0] == method:
+                return self.backContactRev[i][1]
 
-        if method in self.absorberRev.keys():
-            return self.absorberRev.get(method, 0)
-        
-        return self.absorberRev.get(method, 0)
+        return self.backContactRev[0][1]
+
+    def getAbsorberRev(self, method):  
+        for i in range(len(self.absorberRev)):
+            if self.absorberRev[i][0] == method:
+                return self.absorberRev[i][2]
+
+        return self.backContactRev[0][2]
+
+    def getAbsorberType(self, method):
+        for i in range(len(self.absorberRev)):
+            if self.absorberRev[i][0] == method:
+                return self.absorberRev[i][1]
+
+        return self.absorberRev[0][1]
+
 
     def getGlassRev(self, method):
-        return self.glassRev.get(method, 0)
+        for i in range(len(self.glassRev)):
+            if self.glassRev[i][0] == method:
+                return self.glassRev[i][2]
+
+        return self.glassRev[0][2]
+    
+    def getGlassType(self, method):
+        for i in range(len(self.glassRev)):
+            if self.glassRev[i][0] == method:
+                return self.glassRev[i][1]
+
+        return self.glassRev[0][1]
 

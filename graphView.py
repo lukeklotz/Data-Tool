@@ -216,7 +216,10 @@ def displayCostGraph(app, costData, revData):
 
     # Revenue Graph
     html.Div([
+        
         html.Div([
+
+
             html.H4("Cover Glass", className='dropdown'),
             dcc.Dropdown(
                 id='cg-revenue-dropdown',
@@ -224,7 +227,7 @@ def displayCostGraph(app, costData, revData):
                 value=list(coverGlassRev.keys())[0],  # Default value
                 style={'width': width}
             ),
-
+           
             html.H4("Back Contact", className='dropdown'),
             dcc.Dropdown(
                 id='bc-revenue-dropdown',
@@ -240,7 +243,7 @@ def displayCostGraph(app, costData, revData):
                 value=list(absorberRev.keys())[0],
                 style={'width': width}
             ),
-
+            
             html.H4("Glass", className='dropdown'),
             dcc.Dropdown(
                 id='etl-revenue-dropdown',
@@ -249,15 +252,17 @@ def displayCostGraph(app, costData, revData):
                 style={'width': width}
             ),
         ], className="dd-width-padding"), 
-
-        html.Div([
+       
+       html.Div([
             dcc.Graph(
                 id='cost-revenue-chart')
         ], className="drop-down-menu"),
+
     ], className="graph-and-dropdown-container bar-graph"),
 
-    ], className="graph-and-dropdown-container")
 
+    ], className="graph-and-dropdown-container")
+    
 
 ], className="background")
 

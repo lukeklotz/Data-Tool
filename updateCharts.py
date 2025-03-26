@@ -169,13 +169,16 @@ def update_cost_graph(app):
     
 def update_revenue_graph(app):
     revData = revenueData()  
+    cost = costData()
 
     @app.callback(
         Output('cost-revenue-chart', 'figure'),
         [
             Input('cg-revenue-dropdown', 'value'),
-            Input('bc-revenue-dropdown', 'value'),
-            Input('ab-revenue-dropdown', 'value'),
+
+            Input('backContact-dropdown', 'value'),  #input is from cost graph
+            Input('Absorber-dropdown', 'value'),
+            
             Input('etl-revenue-dropdown', 'value')  
         ]
     )
@@ -183,8 +186,10 @@ def update_revenue_graph(app):
 
         
         coverGlassCost = revData.getCoverGlassRev(coverGlass_method)
+
         backContactCost = revData.getBackContactRev(backContact_method)
         absorberCost = revData.getAbsorberRev(absorber_method)
+
         glassCost = revData.getGlassRev(glass_method)
 
         # Calculate total cost

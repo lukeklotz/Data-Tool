@@ -6,24 +6,23 @@ from dash import dcc, html, Input, Output, callback
 
 class costData:
     def __init__(self):
-        self.coverGlassRev  = {
+        self.coverGlass  = {
                                "Thermal Delamination (McCalmot et al.)":0.04,
                                "Hot Knife (McCalmot et al.)":           0.10,
                                "Autoclaving (McCalmot et al.)":         0.44
                                }
-        self.backContactRev = {
-                               "Back Contact (Feng 2021)" : 0.003, #0.0026806
-                               "Back Contact (Ren 2021)":   0.49,
-                               "Back Contact (O'Hara 2023)":0.01,  #0.000014
-                               "Back Contact (Kim 2023)" :  0.002,  #0.001842
+        self.backContact = {
+                               "Feng 2021" : 0.003, #0.0026806
+                               "Ren 2021":   0.49,
+                               "O'Hara 2023":0.01,  #0.000014
+                               "Kim 2023" :  0.002,  #0.001842
                               } 
-        self.absorberRev    = {
-                               "Absorber (Feng 2021)" :    1.76, 
-                               "Absorber (Ren 2021)" :     6.12,      #6.117517
-                               "Absorber (O' Hara)" :      0.002,     #0.0017
-                               "Absorber (Bo Chen 2021)" : 5.54,      #5.54153218
+        self.absorber    = {
+                               "Feng 2021" :    1.76, 
+                               "Ren 2021" :     6.12,      #6.117517
+                               "O'Hara 2023" :      0.002,     #0.0017
                                }
-        self.glassRev       = {
+        self.glass       = {
                                "Glass (Feng 2021)" : 6.18,
                                "Glass (Ren 2021)" : 0.38,
                                "Glass (O'Hara)":    2.38,
@@ -32,25 +31,27 @@ class costData:
                               }
 
     def getCoverGlass(self):
-        return self.coverGlassRev
+        return self.coverGlass
 
     def getBackContact(self):
-        return self.backContactRev
+        return self.backContact
     
     def getAbsorber(self):
-        return self.absorberRev
+        return self.absorber
 
     def getGlass(self):
-        return self.glassRev
+        return self.glass
     
     def getCoverGlassCost(self, method):
-        return self.coverGlassRev.get(method, 0)
+
+        return self.coverGlass.get(method, 0)
 
     def getBackContactCost(self, method):
-        return self.backContactRev.get(method, 0)
+        
+        return self.backContact.get(method, 0)
 
     def getAbsorberCost(self, method):
-        return self.absorberRev.get(method, 0)
+        return self.absorber.get(method, 0)
 
     def getGlassCost(self, method):
-        return self.glassRev.get(method, 0)
+        return self.glass.get(method, 0)

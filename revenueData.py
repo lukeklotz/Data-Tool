@@ -12,22 +12,19 @@ class revenueData:
     def __init__(self):
         self.coverGlassRev  = {"2-2.5mm Glass (McCalmot et al.)":3.75}
 
-        self.backContactRev = {"Au(40nm) (McCalmot et al.)": 5.00, 
-                               "Cu(150nm) (McCalmot et al.)": 0.34, 
-                               "Ag (McCalmot et al.)": 0.71,
-                               "Ag (Feng 2021)":2.59,
-                               "Ag (Ren 2021)":2.59,
-                               "Cu (O'Hara 2023)":0.01,
-                               "Gold (Kim 2023)":93.88,
-                               "PbI₂ (Ren 2021)":0.24} 
+        self.backContactRev = {
+                               "Feng 2021":2.59,
+                               "Ren 2021":2.59,
+                               "O'Hara 2023":0.01,
+                               "Kim 2023":93.88,
+                               } 
 
-        self.absorberRev    = {"PbI₂ (McCalmot et al.)":0.53, 
-                               "PbSO (McCalmot et al.)":0.01,
-                               "MAPbI₃ (Feng 2021)":0.32,
-                               "PbI₂ (Reng 2021)":0.24,
-                               "Pb₃O₄ (O'Hara)":0.01}
+        self.absorberRev    = {
+                               "Feng 2021":0.32,
+                               "Reng 2021":0.24,
+                               "O'Hara":0.01}
 
-        self.glassRev       = {"Glass (McCalmot et al.)":9.38,
+        self.glassRev       = {
                                "ITO/Glass (Feng 2021)":6.92,
                                "ITO/Glass (O'Hara 2023)":6.92,
                                "ITO/Glass (Kim 2023)":6.92,
@@ -46,14 +43,22 @@ class revenueData:
 
     def getGlass(self):
         return self.glassRev
-    
+
     def getCoverGlassRev(self, method):
         return self.coverGlassRev.get(method, 0)
 
     def getBackContactRev(self, method):
+        
+        if method in self.backContactRev.keys():
+            return self.backContactRev.get(method, 0)
+
         return self.backContactRev.get(method, 0)
 
     def getAbsorberRev(self, method):
+
+        if method in self.absorberRev.keys():
+            return self.absorberRev.get(method, 0)
+        
         return self.absorberRev.get(method, 0)
 
     def getGlassRev(self, method):

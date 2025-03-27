@@ -76,7 +76,7 @@ h1 {
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  width: 99.65%;
+  width: 85.65%;
   border-radius: var(--radius-sm);
   padding: 25px;
   margin-bottom: 2rem;
@@ -89,6 +89,10 @@ h1 {
     background-color: var(--secondary-bg);
     gap: 0px;
     margin: 0px;
+}
+
+.revenue {
+  width: 60%;
 }
 
 /* ===== BOXES ===== */
@@ -183,6 +187,7 @@ h1 {
   width: 30%;
   padding: var(--spacing-md);
 }
+
 
 .drop-down-menu {
   max-width: 120%;

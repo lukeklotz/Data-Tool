@@ -6,6 +6,7 @@ def displayCostGraph(app, costData, revData):
     backContactCost = costData.getBackContact() 
     absorberCost    = costData.getAbsorber() 
     glassCost       = costData.getGlass()       
+    HTLayerCost     = costData.getHTLayer()
 
     # group revenue data
     '''
@@ -35,21 +36,21 @@ def displayCostGraph(app, costData, revData):
     # - step 2 methods - #
 
     step2BackContactHTML = ["Chemical", "Physical", "Physical", "Chemical", "Physical / Chemical", "Physical / Chemical"]
-    step2AbsorberHTML    = ["Chemical (Hydrogen Iodide)",
-                            "Chemical (DMF)",
+    step2AbsorberHTML    = ["Hydrogen Iodide",
+                            "DMF",
                             "Ion Exchange",
                             "Potassium Iodide",
-                            "Chemical (DMF)",
-                            "Chemical (Aqueous dissolution)",
-                            "Chemical (Chlorobenzene)"]
-    step2CoatedGlass    = ["Chemical (Butylamine)",
-                           "Chemical (DMF)",
-                           "Chemical (Ethyl Acetate)",
-                           "Chemical (Potassium Iodide)",
-                           "Chemical (DMF)",
-                           "Chemical (Chlorobenzene)",
-                           "Chemical (NaOAc, Nal, H₃PO₂ in water)",
-                           "Chemical (Chlorobenzene)"]
+                            "DMF",
+                            "Aqueous dissolution",
+                            "Chlorobenzene"]
+    step2CoatedGlass    = ["Butylamine",
+                           "DMF",
+                           "Ethyl Acetate",
+                           "Potassium Iodide",
+                           "DMF",
+                           "Chlorobenzene",
+                           "NaOAc, Nal, H₃PO₂ in water",
+                           "Chlorobenzene"]
 
     backContactLit  = ["Feng et al. 2021",
                        "Ren et al. 2021",
@@ -88,7 +89,6 @@ def displayCostGraph(app, costData, revData):
         html.Div([
             html.Div([
                 html.H3("Step 1: Selection of Materials", className="materials-title"),
-                # html.Img(src="/assets/graphic.png", alt="img_2", className="box-image")
                 
                 html.Section([
                     html.Div([
@@ -162,6 +162,14 @@ def displayCostGraph(app, costData, revData):
     html.Div([
         # Column 1: Dropdowns and titles
         html.Div([
+
+            html.H4("HTL", className='dropdown'),
+            dcc.Dropdown(
+                id='HTL-dropdown',
+                options=[{'label': k, 'value': k} for k in HTLayerCost.keys()],
+                value=list(HTLayerCost.keys())[0],   # gets first value (default)
+                style={'width': width}
+            ),
             
             html.H4("Back Contact", className='dropdown'),
             dcc.Dropdown(
@@ -201,14 +209,14 @@ def displayCostGraph(app, costData, revData):
         html.Div([
 
             
-        ], className="dd-width-padding"), 
+        ], className="dd-width-padding revenue"), 
        
        html.Div([
             dcc.Graph(
                 id='cost-revenue-chart')
-        ], className="drop-down-menu"),
+        ], className="drop-down-menu-"),
 
-    ], className="graph-and-dropdown-container bar-graph"),
+    ], className="graph-and-dropdown-container bar-graph revenue"),
 
 
     ], className="graph-and-dropdown-container")

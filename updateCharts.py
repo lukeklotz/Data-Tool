@@ -30,25 +30,38 @@ def update_cost_graph(app):
     @app.callback(
         Output('cost-bar-chart', 'figure'),
         [
+            Input('HTL-dropdown', 'value'),
             Input('backContact-dropdown', 'value'),
             Input('Absorber-dropdown', 'value'),
-            Input('etl-dropdown', 'value')
+            Input('etl-dropdown', 'value'),
         ]
     )
 
-    def update_graph(backContact_method, absorber_method, glass_method):
+    def update_graph(htl_method, backContact_method, absorber_method, glass_method):
 
         backContactCost = cost.getBackContactCost(backContact_method)
-        absorberCost = cost.getAbsorberCost(absorber_method)
-        glassCost = cost.getGlassCost(glass_method)
+        absorberCost    = cost.getAbsorberCost(absorber_method)
+        glassCost       = cost.getGlassCost(glass_method)
+        htlCost         = cost.getHTLayerCost(htl_method)
 
-        formatted_total_cost = formatTotalCost(backContactCost, absorberCost, glassCost)
+        formatted_total_cost = formatTotalCost(htlCost, backContactCost, absorberCost, glassCost)
         
         # Create the bar chart
         fig = go.Figure()
 
         bar_title_font_style = dict(size=12, color=font_color, family=font_family)
 
+        
+        fig.add_trace(go.Bar(
+            x=["HTL"],
+            y=[htlCost],
+            name="HTL",
+            marker=dict(color=barColor1, line=dict(width=2, color="black")),
+            text=[f"${htlCost}"],
+            textposition="outside",  
+            textfont=bar_title_font_style
+        ))
+   
         fig.add_trace(go.Bar(
             x=["Back Contact"],
             y=[backContactCost],
@@ -161,28 +174,47 @@ def update_revenue_graph(app):
 
     @app.callback(
         Output('cost-revenue-chart', 'figure'),
-        [
+        [   Input('HTL-dropdown', 'value'),
             Input('backContact-dropdown', 'value'),  #input is from cost graph
             Input('Absorber-dropdown', 'value'),
             Input('etl-dropdown', 'value')  
         ]
     )
-    def update_graph(backContact_method, absorber_method, glass_method):
+    def update_graph(htl_method, backContact_method, absorber_method, glass_method):
 
         
-
+        htlRev          = revData.getHTLayerRev(htl_method)
         backContactCost = revData.getBackContactRev(backContact_method)
-        absorberCost = revData.getAbsorberRev(absorber_method)
-
-        glassCost = revData.getGlassRev(glass_method)
+        absorberCost    = revData.getAbsorberRev(absorber_method)
+        glassCost       = revData.getGlassRev(glass_method)
 
         # Calculate total cost
-        formatted_total_cost = backContactCost + absorberCost + glassCost
+        formatted_total_cost = htlRev + backContactCost + absorberCost + glassCost
+
+        range_bounds = [0, 20]
+        tick_range = 2
+
+        if formatted_total_cost > 40:
+            range_bounds = [0, 120]
+            tick_range = 10
+        else:
+            range_bounds = [0, 20]
+            tick_range = 2
 
         # Create the bar chart
         fig = go.Figure()
 
         bar_title_font_style = dict(size=12, color=font_color, family=font_family)
+
+        fig.add_trace(go.Bar(
+            x=[revData.getHTLayerType(htl_method)],
+            y=[htlRev],
+            name="HTL",
+            marker=dict(color=barColor1, line=dict(width=2, color="black")),
+            text=[f"${htlRev:.2f}"],
+            textposition="outside",  
+            textfont=bar_title_font_style
+        ))
 
 
         fig.add_trace(go.Bar(
@@ -252,12 +284,12 @@ def update_revenue_graph(app):
             },
             yaxis={
                 'title': 'Revenue $/m²', 
-                'range': [0, 20], 
+                'range': range_bounds, 
                 'gridcolor': accent_color,
                 'tickfont': dict(color=font_color, family=font_family),
                 'tickprefix': '$',  # Add dollar sign for cost values
                 'tickmode': 'linear',
-                'dtick': 2,  # Tick every $2 for cleaner appearance
+                'dtick': tick_range,  # Tick every $2 for cleaner appearance
                 'linecolor': font_color,  # Match axis line to text color
                 'ticks': 'outside',
                 'tickwidth': 2,

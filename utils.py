@@ -5,7 +5,7 @@
 #from costGraphStyle import * 
 #from revenueData import *
 
-def formatTotalCost(backContact_cost, absorber_cost, etl_cost):
+def formatTotalCost(htl_cost, backContact_cost, absorber_cost, etl_cost):
 
     # Calculate the total cost
     total_cost = backContact_cost + absorber_cost + etl_cost

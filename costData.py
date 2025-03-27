@@ -6,11 +6,18 @@ from dash import dcc, html, Input, Output, callback
 
 class costData:
     def __init__(self):
+
+        self.HTLayer     = {
+            "Xiao et al 2025" : 0.00,
+            "Wu et al 2024" : 4.78,
+        }
         self.backContact = {
                                "Feng 2021" : 0.003, #0.0026806
                                "Ren 2021":   0.49,
                                "O'Hara 2023":0.01,  #0.000014
                                "Kim 2023" :  0.002,  #0.001842
+                               "Xiao et al 2025" : 0.00,
+                               "Wu et al 2024" :   0.00,
                             } 
         self.absorber    = {
                                "Feng 2021" :    1.76, 
@@ -26,7 +33,13 @@ class costData:
                                "O'Hara 2023":    2.38,
                                "Kim 2023" : 9.131,
                                "Bo Chen 2021" : 0.03,
+                               "Xiao et al 2025" : 1.50,
+                               "Wu et al 2024" : 0.03,
                               }
+        
+    
+    def getHTLayer(self):
+        return self.HTLayer
 
     def getBackContact(self):
         return self.backContact
@@ -37,6 +50,8 @@ class costData:
     def getGlass(self):
         return self.glass
 
+    def getHTLayerCost(self, method):
+        return self.HTLayer.get(method, 0)
 
     def getBackContactCost(self, method):
         return self.backContact.get(method, 0)

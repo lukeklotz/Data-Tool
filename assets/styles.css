@@ -76,7 +76,7 @@ h1 {
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  width: 85.65%;
+  width: 98.65%;
   border-radius: var(--radius-sm);
   padding: 25px;
   margin-bottom: 2rem;
@@ -92,7 +92,9 @@ h1 {
 }
 
 .revenue {
-  width: 60%;
+  width: 80%;
+  padding-right: 2rem;
+  padding-left: 2rem;
 }
 
 /* ===== BOXES ===== */
@@ -207,12 +209,22 @@ h1 {
     flex-direction: column;
   }
   .graph-and-dropdown-container {
-    width: 94.0%;
-    flex-direction: column;
+    width: 100.0%;
+    flex-direction: row;
+    padding-right: 0;
+    margin-right: 0;
+    gap: 0rem;
+    margin-left: 0;
+  }
+  .revenue {
+    width: 31.4%;
+    margin-right: 10rem;
+    margin-left: 0;
+    padding-left: 0;
   }
   .bar-graph{
     flex-direction: row;
-    padding-right: var(--gap-dist-md);
+    padding-right: var(--gap-dist-sm);
   }
   .box-top {
     min-width: 95%;

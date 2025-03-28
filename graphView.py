@@ -214,7 +214,7 @@ def displayCostGraph(app, costData, revData):
        html.Div([
             dcc.Graph(
                 id='cost-revenue-chart')
-        ], className="drop-down-menu-"),
+        ], className="drop-down-menu revenue"),
 
     ], className="graph-and-dropdown-container bar-graph revenue"),
 

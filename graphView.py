@@ -8,22 +8,8 @@ def displayCostGraph(app, costData, revData):
     glassCost       = costData.getGlass()       
     HTLayerCost     = costData.getHTLayer()
 
-    # group revenue data
-    '''
-    backContactRev = revData.getBackContact()
-    absorberRev    = revData.getAbsorber()
-    glassRev       = revData.getGlass()
-    '''
-    #drop down and background styles
+    # width of dropdown menus
     width            = '90%'
-    #dd_color         = '#353431'
-    #bg_color         = '#23221B'
-    #background_color = '#8E9FA3'
-
-    #bar graph styles
-    #font_color  = "#afa732"
-    #font_family = "Courier New"
-
 
     # -  step 1 methods - #
     backContactHtml = ["Aluminum", "Gold", "Silver", "Copper", "Carbon"]

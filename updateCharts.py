@@ -49,9 +49,15 @@ def update_cost_graph(app):
         # Create the bar chart
         fig = go.Figure()
 
-        bar_title_font_style = dict(size=12, color=font_color, family=font_family)
+        range_bounds = [0, 16]
 
-        
+        if formatted_total_cost > 16:
+            range_bounds = [0, 20]
+        else:
+            range_bounds = [0, 16]
+
+        bar_title_font_style = dict(size=12, color=font_color, family=font_family)
+ 
         fig.add_trace(go.Bar(
             x=["HTL"],
             y=[htlCost],
@@ -130,7 +136,7 @@ def update_cost_graph(app):
             },
             yaxis={
                 'title': 'Cost $/m²', 
-                'range': [0, 16], 
+                'range': range_bounds, 
                 'gridcolor': accent_color,
                 'tickfont': dict(color=font_color, family=font_family),
                 'tickprefix': '$',  # Add dollar sign for cost values
@@ -191,6 +197,8 @@ def update_revenue_graph(app):
         # Calculate total cost
         formatted_total_cost = htlRev + backContactCost + absorberCost + glassCost
 
+
+        #update range and tick dynamically based on formatted_total_cost
         range_bounds = [0, 20]
         tick_range = 2
 

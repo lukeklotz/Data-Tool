@@ -16,7 +16,7 @@ def displayCostGraph(app, costData, revData):
     htlHTML         = ["Free", "Spiro-OmETAD", "CuSCN", "NiO"]
     absorberHTML    = ["MAPbI₃"]
     etlHTML         = ["TiO₂", "SnO₂"]
-    coatedGlassHTML         = ["Coated Glass"]
+    coatedGlassHTML = ["Coated Glass"]
 
 
     # - step 2 methods - #
@@ -38,10 +38,10 @@ def displayCostGraph(app, costData, revData):
                            "NaOAc, Nal, H₃PO₂ in water",
                            "Chlorobenzene"]
 
-    backContactLit  = ["Feng et al. 2021",
+    backContactLit  = ["Feng et al. 2021", 
                        "Ren et al. 2021",
                        "Kim et al. 2023",
-                       "O Hara et al. 2023",
+                       "O'Hara et al. 2023",
                        "Xiao et al. 2025",
                        "Wu et al. 2024"]
     absorberLit     = ["Feng et al. 2021",
@@ -54,11 +54,22 @@ def displayCostGraph(app, costData, revData):
     CoatedGlassLit  = ["Feng et al. 2021",
                        "Deng et al. 2022",
                        "Ren et al. 2021",
-                       "O'hara et al. 2023",
+                       "O'Hara et al. 2023",
                        "Kim et al. 2023",
-                       "Bo Chen et al. 2022",
+                       "Bo Chen et al. 2021",
                        "Xiao et al. 2025",
                        "Wu et al. 2024"]
+    
+    lit_urls = {
+        "Feng et al. 2021": "https://example.com/feng2021",
+        "Deng et al. 2022": "#",
+        "Bo Chen et al. 2021": "#",
+        "Ren et al. 2021": "https://example.com/ren2021",
+        "Kim et al. 2023": "https://example.com/kim2023",
+        "O'Hara et al. 2023": "https://example.com/ohara2023",
+        "Xiao et al. 2025": "https://example.com/xiao2025",
+        "Wu et al. 2024": "https://example.com/wu2024",
+    }
 
     app.layout = html.Div([
         
@@ -111,7 +122,6 @@ def displayCostGraph(app, costData, revData):
 
             html.Div([
                 html.H3("Step 2: Selection of Extraction Method", className="materials-title"),
-                #html.Img(src="/assets/text.png", alt="img_2", className="box-image")
                 html.Section([
                     html.Div([
                         html.Div("Layer"), 
@@ -122,18 +132,18 @@ def displayCostGraph(app, costData, revData):
                     html.Div([
                         html.Div("Back Contact"),
                             html.Div([html.Div(material) for material in step2BackContactHTML], className="layer-info-col"),
-                            html.Div([html.Div(literature) for literature in backContactLit], className="layer-info-col"),
+                            html.Div([html.A(literature, href=lit_urls[literature], target="_blank") for literature in backContactLit], className="layer-info-col"),
 
                     ], className="layer-info-row"),
                     html.Div([
                         html.Div("Absorber"),
                             html.Div([html.Div(material) for material in step2AbsorberHTML], className="layer-info-col"),
-                            html.Div([html.Div(literature) for literature in absorberLit], className="layer-info-col")
+                            html.Div([html.A(literature, href=lit_urls[literature], target="_blank") for literature in absorberLit], className="layer-info-col")
                     ], className="layer-info-row"),
                     html.Div([
                         html.Div("ETL / Coated Glass"),
                             html.Div([html.Div(material) for material in step2CoatedGlass], className="layer-info-col"),
-                            html.Div([html.Div(literature) for literature in CoatedGlassLit], className="layer-info-col")
+                            html.Div([html.A(literature, href=lit_urls[literature], target="_blank") for literature in CoatedGlassLit], className="layer-info-col")
                     ], className="layer-info-row"),
 
                 ], className="layer-info-box-1")

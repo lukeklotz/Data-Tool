@@ -42,6 +42,15 @@ h1 {
   font-family: var(--font-main);
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
 /* ===== LAYOUT CONTAINERS ===== */
 .background {
   display: flex;

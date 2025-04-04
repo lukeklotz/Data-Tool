@@ -126,7 +126,6 @@ def update_cost_graph(app):
                 xanchor='center',
             ),
             xaxis={
-                'title': 'Method',
                 'tickfont': dict(color=font_color, family=font_family),
                 'showgrid': False,  
                 'linecolor': font_color,  

@@ -61,14 +61,14 @@ def displayCostGraph(app, costData, revData):
                        "Wu et al. 2024"]
     
     lit_urls = {
-        "Feng et al. 2021": "https://example.com/feng2021",
-        "Deng et al. 2022": "#",
-        "Bo Chen et al. 2021": "#",
-        "Ren et al. 2021": "https://example.com/ren2021",
-        "Kim et al. 2023": "https://example.com/kim2023",
-        "O'Hara et al. 2023": "https://example.com/ohara2023",
+        "Feng et al. 2021": "https://www.sciencedirect.com/science/article/pii/S2666386421000266?via%3Dihub",
+        "Deng et al. 2022": "https://pubs.acs.org/doi/10.1021/acsami.2c14638?ref=pdf",
+        "Bo Chen et al. 2021": "https://www.nature.com/articles/s41467-021-26121-1",
+        "Ren et al. 2021": "https://pubs.acs.org/doi/10.1021/acssuschemeng.1c07083?ref=pdf",
+        "Kim et al. 2023": "https://pubs.acs.org/doi/10.1021/acsenergylett.3c01542?ref=pdf",
+        "O'Hara et al. 2023": "https://link.springer.com/article/10.1557/s43580-023-00559-5",
         "Xiao et al. 2025": "https://example.com/xiao2025",
-        "Wu et al. 2024": "https://example.com/wu2024",
+        "Wu et al. 2024": "https://pubs.rsc.org/en/content/articlelanding/2024/ee/d4ee01071j",
     }
 
     app.layout = html.Div([

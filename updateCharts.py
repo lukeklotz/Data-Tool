@@ -20,7 +20,6 @@ barColor4 = '#A66F6F'
 barColor5 = '#6FA697' 
 
 #bar graph styles
-#font_color  = "#afa732"   # mustard-yellow
 font_color   = "#ffffff" # white
 font_family = "Courier New"
 
@@ -49,6 +48,8 @@ def update_cost_graph(app):
         # Create the bar chart
         fig = go.Figure()
 
+
+        #dynamically update range bounds based on formatted_total_cost
         range_bounds = [0, 16]
 
         if formatted_total_cost > 16:
@@ -125,58 +126,57 @@ def update_cost_graph(app):
                 xanchor='center',
             ),
             xaxis={
-                #'title': 'Method',
+                'title': 'Method',
                 'tickfont': dict(color=font_color, family=font_family),
-                'showgrid': False,  # Remove vertical grid lines for cleaner look
-                'linecolor': font_color,  # Match axis line to text color
-                'tickangle': 0,  # Angle labels for better readability if you have long method names
-                'ticks': 'outside',  # Place ticks outside
-                'tickwidth': 2,  # Make ticks more visible
-                'tickcolor': font_color  # Match tick color to text
+                'showgrid': False,  
+                'linecolor': font_color,  
+                'tickangle': 0,  
+                'ticks': 'outside',  
+                'tickwidth': 2,  
+                'tickcolor': font_color  
             },
             yaxis={
                 'title': 'Cost $/m²', 
                 'range': range_bounds, 
                 'gridcolor': accent_color,
                 'tickfont': dict(color=font_color, family=font_family),
-                'tickprefix': '$',  # Add dollar sign for cost values
+                'tickprefix': '$',  
                 'tickmode': 'linear',
-                'dtick': 2,  # Tick every $2 for cleaner appearance
-                'linecolor': font_color,  # Match axis line to text color
+                'dtick': 2,  
+                'linecolor': font_color,  
                 'ticks': 'outside',
                 'tickwidth': 2,
                 'tickcolor': font_color
             },
             barmode='group',
-            bargap=0.15,  # Adjust spacing between bar groups
-            bargroupgap=0.05,  # Adjust spacing between bars within groups
-            margin=dict(t=120, b=40, l=60, r=40),  # Slightly larger bottom and left margins
+            bargap=0.15,  
+            bargroupgap=0.05,  
+            margin=dict(t=120, b=40, l=60, r=40),  
             autosize=True,
             title_font=dict(size=24, color=font_color, family=font_family),
             xaxis_title_font=dict(size=18, color=font_color, family=font_family),
             yaxis_title_font=dict(size=18, color=font_color, family=font_family),
             legend=dict(
                 font=dict(size=14, color=font_color, family=font_family),
-                bgcolor='rgba(0,0,0,0.1)',  # Semi-transparent background
+                bgcolor='rgba(0,0,0,0.1)',  
                 bordercolor=font_color,
                 borderwidth=1,
-                orientation='h',  # Horizontal legend
+                orientation='h',  
                 yanchor='top',
-                y=1.15,  # Position above the chart
+                y=1.15,  
                 xanchor='center',
                 x=0.5
             ),
             paper_bgcolor=bg_color,
-            plot_bgcolor=bg_color,  # Match plot background to paper background
+            plot_bgcolor=bg_color,  
             height=500,
-            uniformtext=dict(mode='hide', minsize=10),  # Ensures uniform text size
+            uniformtext=dict(mode='hide', minsize=10),  
         )
 
         return fig
     
 def update_revenue_graph(app):
     revData = revenueData()  
-    cost = costData()
 
     @app.callback(
         Output('cost-revenue-chart', 'figure'),
@@ -283,49 +283,49 @@ def update_revenue_graph(app):
             ),
             xaxis={
                 'tickfont': dict(color=font_color, family=font_family),
-                'showgrid': False,  # Remove vertical grid lines for cleaner look
-                'linecolor': font_color,  # Match axis line to text color
-                'tickangle': 0,  # Angle labels for better readability if you have long method names
-                'ticks': 'outside',  # Place ticks outside
-                'tickwidth': 2,  # Make ticks more visible
-                'tickcolor': font_color  # Match tick color to text
+                'showgrid': False,  
+                'linecolor': font_color,  
+                'tickangle': 0,  
+                'ticks': 'outside',  
+                'tickwidth': 2,  
+                'tickcolor': font_color  
             },
             yaxis={
                 'title': 'Revenue $/m²', 
                 'range': range_bounds, 
                 'gridcolor': accent_color,
                 'tickfont': dict(color=font_color, family=font_family),
-                'tickprefix': '$',  # Add dollar sign for cost values
+                'tickprefix': '$',  
                 'tickmode': 'linear',
-                'dtick': tick_range,  # Tick every $2 for cleaner appearance
-                'linecolor': font_color,  # Match axis line to text color
+                'dtick': tick_range,  
+                'linecolor': font_color,  
                 'ticks': 'outside',
                 'tickwidth': 2,
                 'tickcolor': font_color,
             },
             barmode='group',
-            bargap=0.15,  # Adjust spacing between bar groups
-            bargroupgap=0.05,  # Adjust spacing between bars within groups
-            margin=dict(t=120, b=40, l=60, r=40),  # Slightly larger bottom and left margins
+            bargap=0.15,  
+            bargroupgap=0.05,  
+            margin=dict(t=120, b=40, l=60, r=40),  
             autosize=True,
             title_font=dict(size=24, color=font_color, family=font_family),
             xaxis_title_font=dict(size=18, color=font_color, family=font_family),
             yaxis_title_font=dict(size=18, color=font_color, family=font_family),
             legend=dict(
                 font=dict(size=14, color=font_color, family=font_family),
-                bgcolor='rgba(0,0,0,0.1)',  # Semi-transparent background
+                bgcolor='rgba(0,0,0,0.1)',  
                 bordercolor=font_color,
                 borderwidth=1,
-                orientation='h',  # Horizontal legend
+                orientation='h',  
                 yanchor='top',
-                y=1.15,  # Position above the chart
+                y=1.15,  
                 xanchor='center',
                 x=0.5
             ),
             paper_bgcolor=bg_color,
-            plot_bgcolor=bg_color,  # Match plot background to paper background
+            plot_bgcolor=bg_color,  
             height=500, 
-            uniformtext=dict(mode='hide', minsize=10),  # Ensures uniform text size
+            uniformtext=dict(mode='hide', minsize=10),  
         )
 
         return fig

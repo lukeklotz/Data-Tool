@@ -130,7 +130,7 @@ a:hover {
 
 .box-top {
   align-items: center;
-  max-width:27%;
+  max-width:47%;
   margin-right: 75px;
 }
 
@@ -191,6 +191,11 @@ a:hover {
   justify-content: flex-end;
 }
 
+.nsf {
+  font-style: italic;
+  font-weight: 100;
+  color: rgb(186, 186, 186);
+}
 /* ===== DROPDOWN ELEMENTS ===== */
 .dropdown {
   color: var(--accent-color);

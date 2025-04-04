@@ -81,6 +81,8 @@ def displayCostGraph(app, costData, revData):
                 html.P("3. The price of chemicals was taken from commercial suppliers (Sigma Aldrich, Alibaba, and ChemAnaylst) to utilize bulk chemicals prices for large scale recycling. ", className="top"),
                 html.P("4. The price of 1 kWh of energy was taken from the most up-to-date cost of industrial electricity at $0.073/kWh  ", className="top"),
                 html.P("5. The model build does not include frame, cables, and junctions. ", className="top"),
+                html.P("(This project was funded by the NSF grant #2403520)", className="top nsf"),
+                
             ], className="box-common box-top"),
 
         html.Div([
@@ -115,6 +117,7 @@ def displayCostGraph(app, costData, revData):
                         html.Div("FTO Coated Glass"),
                             html.Div([html.Div(material) for material in coatedGlassHTML], className="layer-info-col"),
                     ], className="layer-info-row"),
+
 
                 ], className="layer-info-box-1")
             ], className="box-common box-mid"),
@@ -203,7 +206,6 @@ def displayCostGraph(app, costData, revData):
     html.Div([
         
         html.Div([
-
             
         ], className="dd-width-padding revenue"), 
        
@@ -214,10 +216,8 @@ def displayCostGraph(app, costData, revData):
 
     ], className="graph-and-dropdown-container bar-graph revenue"),
 
-
     ], className="graph-and-dropdown-container")
     
-
 ], className="background")
 
 

@@ -94,7 +94,8 @@ a:hover {
   padding: 25px;
   margin-bottom: 2rem;
   margin-top: 0px;
-  gap: var(--gap-dist-xsm)
+  gap: var(--gap-dist-xsm);
+  margin-right: 0px;
 }
 
 .bar-graph {
@@ -106,8 +107,8 @@ a:hover {
 
 .revenue {
   width: 80%;
-  padding-right: 2rem;
-  padding-left: 2rem;
+  padding-right: 2.5rem;
+  padding-left: 0rem;
 }
 
 /* ===== BOXES ===== */

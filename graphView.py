@@ -87,44 +87,7 @@ def displayCostGraph(app, costData, revData):
 
         html.Div([
             html.Div([
-                html.H3("Step 1: Selection of Materials", className="materials-title"),
-                
-                html.Section([
-                    html.Div([
-                        html.Div("Layer"), 
-                        html.Div("Alternative Materials")
-                    ], className="layer-info-row"),
-
-                    html.Div([
-                        html.Div("Back Contact Layer"),
-                            html.Div([html.Div(material, className="layer-info-item") for material in backContactHtml], className="layer-info-col"),
-                    ], className="layer-info-row"),
-                     
-                    html.Div([
-                        html.Div("Hole Transport Layer"),
-                            html.Div([html.Div(material) for material in htlHTML], className="layer-info-col"),
-
-                    ], className="layer-info-row"),
-                    html.Div([
-                        html.Div("Absorber"),
-                            html.Div([html.Div(material) for material in absorberHTML], className="layer-info-col"),
-                    ], className="layer-info-row"),
-                    html.Div([
-                        html.Div("ETL"),
-                            html.Div([html.Div(material) for material in etlHTML], className="layer-info-col"),
-                    ], className="layer-info-row"),
-                    html.Div([
-                        html.Div("FTO Coated Glass"),
-                            html.Div([html.Div(material) for material in coatedGlassHTML], className="layer-info-col"),
-                    ], className="layer-info-row"),
-
-
-                ], className="layer-info-box-1")
-            ], className="box-common box-mid"),
-
-
-            html.Div([
-                html.H3("Step 2: Selection of Extraction Method", className="materials-title"),
+                html.H3("Input: Selection of Extraction Method", className="materials-title"),
                 html.Section([
                     html.Div([
                         html.Div("Layer"), 
@@ -149,6 +112,41 @@ def displayCostGraph(app, costData, revData):
                             html.Div([html.A(literature, href=lit_urls[literature], target="_blank") for literature in CoatedGlassLit], className="layer-info-col")
                     ], className="layer-info-row"),
 
+                ], className="layer-info-box-1")
+            ], className="box-common box-mid"),
+
+            html.Div([
+                html.H3("Output: Total Revenue of Selected Methods", className="materials-title"),
+                
+                html.Section([
+                    html.Div([
+                        html.Div("Layer"), 
+                        html.Div("Alternative Materials")
+                    ], className="layer-info-row"),
+
+                    html.Div([
+                        html.Div("Hole Transport Layer (HTL)"),
+                            html.Div([html.Div(material) for material in htlHTML], className="layer-info-col"),
+
+                    ], className="layer-info-row"),
+
+                    html.Div([
+                        html.Div("Back Contact Layer"),
+                            html.Div([html.Div(material, className="layer-info-item") for material in backContactHtml], className="layer-info-col"),
+                    ], className="layer-info-row"),
+                     
+                    html.Div([
+                        html.Div("Absorber"),
+                            html.Div([html.Div(material) for material in absorberHTML], className="layer-info-col"),
+                    ], className="layer-info-row"),
+                    html.Div([
+                        html.Div("ETL"),
+                            html.Div([html.Div(material) for material in etlHTML], className="layer-info-col"),
+                    ], className="layer-info-row"),
+                    html.Div([
+                        html.Div("FTO Coated Glass"),
+                            html.Div([html.Div(material) for material in coatedGlassHTML], className="layer-info-col"),
+                    ], className="layer-info-row"),
                 ], className="layer-info-box-1")
             ], className="box-common box-mid"),
             ], className="materials-container"),

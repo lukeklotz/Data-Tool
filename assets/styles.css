@@ -131,19 +131,11 @@ a:hover {
 .box-top {
   align-items: center;
   max-width:47%;
-  margin-right: 75px;
+  margin-right: 1rem;
 }
 
 .box-mid {
   align-items: center;
-}
-
-.box-image {
-  max-width: 95%;
-  max-height: 95%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
 }
 
 /* ===== TYPOGRAPHY ===== */

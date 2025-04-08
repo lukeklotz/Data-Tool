@@ -113,7 +113,7 @@ def displayCostGraph(app, costData, revData):
                     ], className="layer-info-row"),
 
                 ], className="layer-info-box-1")
-            ], className="box-common box-mid"),
+            ], className="box-common box-mid input"),
 
             html.Div([
                 html.H3("Output: Total Revenue of Selected Methods", className="materials-title"),

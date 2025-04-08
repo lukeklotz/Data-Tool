@@ -138,6 +138,10 @@ a:hover {
   align-items: center;
 }
 
+.input {
+  width: 70%;
+}
+
 /* ===== TYPOGRAPHY ===== */
 .materials-title {
   color: var(--accent-color);
@@ -219,6 +223,18 @@ a:hover {
   .top-row-container {
     flex-direction: column;
   }
+
+  .box-mid{
+  }
+
+  .materials-container{
+    width: 90%;
+  }
+
+  .input {
+    width: 70%;
+  }
+
   .graph-and-dropdown-container {
     width: 100.0%;
     flex-direction: row;

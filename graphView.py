@@ -78,7 +78,7 @@ def displayCostGraph(app, costData, revData):
                 html.H1("Assumptions for Tool", className="big-font"),
                 html.P("1. The volume of chemicals applied was determined by completely submerging the 1m2 module plus 10% volume on the surface area, totaling 3.9L.", className="top"),
                 html.P("2. The methods were modeled following literature and applying large scale applications. ", className="top"),
-                html.P("3. The price of chemicals was taken from commercial suppliers (Sigma Aldrich, Alibaba, and ChemAnaylst) to utilize bulk chemicals prices for large scale recycling. ", className="top"),
+                html.P("3. The prices of chemicals were obtained from commercial suppliers (Sigma Aldrich, Alibaba, and ChemAnaylst) to reflect bulk chemical prices for large scale recycling. ", className="top"),
                 html.P("4. The price of 1 kWh of energy was taken from the most up-to-date cost of industrial electricity at $0.073/kWh  ", className="top"),
                 html.P("5. The model build does not include frame, cables, and junctions. ", className="top"),
                 html.A("(This project was funded by the NSF grant #2403520)", href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2403520&HistoricalAwards=false", className="top nsf"),

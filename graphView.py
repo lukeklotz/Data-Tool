@@ -67,7 +67,7 @@ def displayCostGraph(app, costData, revData):
         "Ren et al. 2021": "https://pubs.acs.org/doi/10.1021/acssuschemeng.1c07083?ref=pdf",
         "Kim et al. 2023": "https://pubs.acs.org/doi/10.1021/acsenergylett.3c01542?ref=pdf",
         "O'Hara et al. 2023": "https://link.springer.com/article/10.1557/s43580-023-00559-5",
-        "Xiao et al. 2025": "https://example.com/xiao2025",
+        "Xiao et al. 2025": "https://www.nature.com/articles/s41586-024-08408-7",
         "Wu et al. 2024": "https://pubs.rsc.org/en/content/articlelanding/2024/ee/d4ee01071j",
     }
 
